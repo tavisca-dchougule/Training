@@ -11,24 +11,18 @@ namespace OperatorOverloading.Host
     {
         static void Main(string[] args)
         {
-           // Console.ReadKey();
             Money money1 = new Money();
             Money money2 = new Money();
             Money money3 = new Money();
 
-
-
             Console.WriteLine("Enter 1st Currency:");
-                money1.Currency = Console.ReadLine();
+            money1.Currency = Console.ReadLine();
 
-
-                while (true)
+                while (true) //this while keep on taking the input unless you enter valid amount.
                 {
-
                     Console.WriteLine("Enter amount for that Currency.");
                     try
                     {
-
                         string input = Console.ReadLine();
                         money1.Amount = double.Parse(input);
                         if (money1.Amount < 0)
@@ -44,20 +38,17 @@ namespace OperatorOverloading.Host
                     }
                     break;
                 }
-
-              
+   
              Console.WriteLine();
             
             Console.WriteLine("Enter 2nd Currency.");
             money2.Currency = Console.ReadLine();
 
-            while (true)
+            while (true) //this while keep on taking the input unless you enter valid amount.
             {
-
                 Console.WriteLine("Enter amount for that Currency.");
                 try
                 {
-
                     string input = Console.ReadLine();
                     money2.Amount = double.Parse(input);
                     if (money1.Amount < 0)
@@ -78,13 +69,17 @@ namespace OperatorOverloading.Host
             {
                 money3 = money1 + money2;
             }
-            catch (InvalidCurrencyException exception)
+            /* this catch handles the invalid currency exception which is defined by the user.
+             * out of range exception occurs when the currencies of both the adding money is different*/
+            catch (InvalidCurrencyException exception) //this catch handles the Invalid Currency Exception which is defined by the user.
             {
                 Console.WriteLine(""+exception.Message);
                 Console.ReadKey();
                 return;
             }
-            catch (OutOfRangeException exception)
+                /* this catch handles the Out of range exception which is defined by the user.
+                 * out of range exception occurs when range of double is exceeded after addition*/
+            catch (OutOfRangeException exception) 
             {
                 Console.WriteLine("" + exception.Message);
                 Console.ReadKey();
@@ -92,7 +87,6 @@ namespace OperatorOverloading.Host
             }
 
             Console.WriteLine();
-
             Console.WriteLine("Amount1: "+money1.Amount +"  Currency1: "+ money1.Currency);
             Console.WriteLine("Amount2: " + money2.Amount + "  Currency2: " + money2.Currency);
             Console.WriteLine("After Addition:");
