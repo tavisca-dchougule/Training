@@ -8,22 +8,44 @@ namespace OperatorOverloading.Model
 {
     public class Money
     {
+        private double _amount;
+        private string _currency;
         public double Amount
         {
-            set;
-            get;
+            get
+            {
+                return _amount;
+            }
+            set
+            {
+                _amount = value;
+            }
+            
         }
         public string Currency
         {
-            set;
-            get;
-
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value) || (value).Length != 3)
+                {
+                    throw new Exception("Invalid Currency.");
+                }
+                _currency = value;
+            }
+            get
+            {
+                return _currency;
+            }
         }
         public static Money operator +(Money Money1, Money Money2) //this is operator overloaded function
         {
-            if (Money1 == null || Money2 == null)
+            if (Money1 == null)
             {
-                 throw new NullReferenceException();
+                 throw new NullReferenceException("Money 1 objet is null");
+            }
+             if (Money2 == null)
+            {
+                throw new NullReferenceException("Money 2 objet is null");
             }
             Money Money3 = new Money();
 
@@ -39,9 +61,16 @@ namespace OperatorOverloading.Model
             }
             else
             {
-                throw new InvalidCurrencyException();
+                throw new CurrencyMismatchException();
             }
             return Money3;
+        }
+        public override  string ToString()
+        {
+            StringBuilder display=new StringBuilder();
+            display.Append("Amount1: "+this.Amount+"  Currency1: "+ this.Currency);
+
+            return display.ToString();  
         }
     }
 }

@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace OperatorOverloading.Model
 {
+     [Serializable()]
     public class OutOfRangeException : Exception
     {
-        private string _message;
-        /* this is user defined exception
-         * when object of this exception is created, "Out of Range Exception." message stored in message variable. */
+        /* this is user defined exception*/
+        
         public OutOfRangeException()
         {
-            _message = "Out of Range Exception."; 
+           
         }
-        public override string Message
-        {
-            get
-            {
-                return _message;
-            }
+        protected OutOfRangeException(System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context)
+        : base(info, context) //serialization
+        { 
         }
+        
     }
 }
