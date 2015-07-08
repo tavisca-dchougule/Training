@@ -8,18 +8,18 @@ namespace OperatorOverloading.Model
 {
     public class OutOfRangeException : Exception
     {
-        private string message;
+        private string _message;
         /* this is user defined exception
          * when object of this exception is created, "Out of Range Exception." message stored in message variable. */
         public OutOfRangeException()
         {
-            this.message = "Out of Range Exception."; 
+            _message = "Out of Range Exception."; 
         }
-        public string Message
+        public override string Message
         {
             get
             {
-                return this.message;
+                return _message;
             }
         }
     }

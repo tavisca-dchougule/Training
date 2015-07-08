@@ -6,22 +6,24 @@ using System.Threading.Tasks;
 
 namespace OperatorOverloading.Model
 {
+    [Serializable()]
    public class InvalidCurrencyException : Exception
     {
-        private string message;
+        private string _message;
         /* this is user defined exception
          * when object of this exception is created, "Currency of Both the Amount is Different." message stored in message variable. */
         public InvalidCurrencyException()
         {
-            this.message = "Currency of Both the Amount is Different.";
+             _message="Currency of Both the Amount is Different.";
         }
-
-        public string Message
+        public override string Message
         {
             get
             {
-                return this.message;
+                return _message;
             }
+           
         }
+        
     }
 }
