@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OperatorOverloading.Model;
+//using OperatorOverloading.Model;
 
 namespace OperatorOverloading.dbl
 {
     public class CurrencyConverter : ICurrencyConverter
         {
-            public Money ConvertCurrency(Money fromCurrency, Money toCurrency)
+            public double ConvertCurrency(string fromCurrency, string toCurrency)
             {
                 if (fromCurrency == null || toCurrency == null)
                 {
                     throw new ArgumentException(Resources.InvalidArgument);
                 }
 
-                string currency1 = fromCurrency.Currency.ToUpper(); //here case is handeled by converting string to upper case, as currencies are stored in uppercase in dictonary.
-                string currency2 = toCurrency.Currency.ToUpper();
+                string currency1 = fromCurrency.ToUpper(); //here case is handeled by converting string to upper case, as currencies are stored in uppercase in dictonary.
+                string currency2 = toCurrency.ToUpper();
                 WebFetch fetch=null;
                 ParseJSON parser = null;
                 try
@@ -59,12 +59,13 @@ namespace OperatorOverloading.dbl
                 /*here is the logic for the inter conversion of currency.
                 i.e. i can convert from any currency to any other currency*/
                 double conversionRate = (conversionRate2 / conversionRate1);
+                return conversionRate;
 
-                Money convertedCurrency = new Money();
+               /* double convertedCurrency = 0.0;
 
-                convertedCurrency.Amount = (fromCurrency.Amount * conversionRate);
+                convertedCurrency = (fromCurrency.Amount * conversionRate);
                 convertedCurrency.Currency = toCurrency.Currency;
-                return convertedCurrency;
+                return convertedCurrency;*/
                 //here convertedCurrency is a Money object which is returned. and it will consist answer i.e. converted rate.
             }
         }

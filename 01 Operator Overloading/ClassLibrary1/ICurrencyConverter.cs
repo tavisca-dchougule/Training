@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OperatorOverloading.Model;
+//using OperatorOverloading.Model;
 
 namespace OperatorOverloading.dbl
 {
@@ -11,6 +11,6 @@ namespace OperatorOverloading.dbl
      * this interface is implemented by the CurrencyConverter class.*/
     public interface ICurrencyConverter
     {
-        Money ConvertCurrency(Money money1, Money money2);
+        double ConvertCurrency(string money1, string money2);
     }
 }

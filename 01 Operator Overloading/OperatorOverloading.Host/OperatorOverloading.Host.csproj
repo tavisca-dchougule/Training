@@ -48,10 +48,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary1\OperatorOverloading.dbl.csproj">
-      <Project>{d19abd5e-2b86-4b1a-8e25-c3ce83c24e98}</Project>
-      <Name>OperatorOverloading.dbl</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OperatorOverloading.Model\OperatorOverloading.Model.csproj">
       <Project>{9188609b-2fa4-4918-b4eb-647ca8c36a56}</Project>
       <Name>OperatorOverloading.Model</Name>

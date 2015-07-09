@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OperatorOverloading.dbl;
 
 namespace OperatorOverloading.Model
 {
@@ -36,6 +37,7 @@ namespace OperatorOverloading.Model
                  throw new ArgumentException(Messages.InvalidArgument);
             }
             Money money3 = new Money();
+            CurrencyConverter converter = new CurrencyConverter();
 
             if (string.Equals(money1.Currency, money2.Currency, StringComparison.OrdinalIgnoreCase)) //here we r checking whether the currencies of both money is same or not.. if not throw InvalidCurrencyException exception 
             {
@@ -44,12 +46,23 @@ namespace OperatorOverloading.Model
                 {
                     throw new OverflowException();
                 }
-                money3.Currency = money1.Currency;
+               
             }
             else
             {
-                throw new CurrencyMismatchException();
+                //throw new CurrencyMismatchException();
+                try
+                {
+                    double conversionRate=0.0;
+                   conversionRate=  converter.ConvertCurrency(money2.Currency, money1.Currency);
+                   money3.Amount = money1.Amount + (money2.Amount*conversionRate);
+                }
+                catch (Exception e)
+                {
+                    throw e;
+                }
             }
+            money3.Currency = money1.Currency;
             return money3;
         }
         public override  string ToString()
