@@ -20,7 +20,7 @@ namespace OperatorOverloading.Model
             {
                 if (string.IsNullOrWhiteSpace(value) || (value).Length != 3)
                 {
-                    throw new Exception("Invalid Currency.");
+                    throw new Exception(Messages.InvalidCurrency);
                 }
                 _currency = value;
             }
@@ -33,7 +33,7 @@ namespace OperatorOverloading.Model
         {
             if (money1 == null || money2 == null)
             {
-                 throw new ArgumentException("Either of the argument is null.");
+                 throw new ArgumentException(Messages.InvalidArgument);
             }
             Money money3 = new Money();
 
