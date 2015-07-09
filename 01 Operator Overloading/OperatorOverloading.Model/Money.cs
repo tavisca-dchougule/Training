@@ -8,19 +8,11 @@ namespace OperatorOverloading.Model
 {
     public class Money
     {
-        private double _amount;
         private string _currency;
         public double Amount
         {
-            get
-            {
-                return _amount;
-            }
-            set
-            {
-                _amount = value;
-            }
-            
+            get;
+            set;
         }
         public string Currency
         {
@@ -37,33 +29,28 @@ namespace OperatorOverloading.Model
                 return _currency;
             }
         }
-        public static Money operator +(Money Money1, Money Money2) //this is operator overloaded function
+        public static Money operator +(Money money1, Money money2) //this is operator overloaded function
         {
-            if (Money1 == null)
+            if (money1 == null || money2 == null)
             {
-                 throw new NullReferenceException("Money 1 objet is null");
+                 throw new ArgumentException("Either of the argument is null.");
             }
-             if (Money2 == null)
-            {
-                throw new NullReferenceException("Money 2 objet is null");
-            }
-            Money Money3 = new Money();
+            Money money3 = new Money();
 
-            if (string.Equals(Money1.Currency, Money2.Currency, StringComparison.OrdinalIgnoreCase)) //here we r checking whether the currencies of both money is same or not.. if not throw InvalidCurrencyException exception 
+            if (string.Equals(money1.Currency, money2.Currency, StringComparison.OrdinalIgnoreCase)) //here we r checking whether the currencies of both money is same or not.. if not throw InvalidCurrencyException exception 
             {
-                Money3.Amount = Money1.Amount + Money2.Amount;
-                if(double.IsInfinity(Money3.Amount))// here we r checking whether range of double is exceeded or not....if yes then throw out of range exception
+                money3.Amount = money1.Amount + money2.Amount;
+                if(double.IsInfinity(money3.Amount))// here we r checking whether range of double is exceeded or not....if yes then throw out of range exception
                 {
-                    throw new OutOfRangeException();
+                    throw new OverflowException();
                 }
-                Money3.Currency = Money1.Currency;
-
+                money3.Currency = money1.Currency;
             }
             else
             {
                 throw new CurrencyMismatchException();
             }
-            return Money3;
+            return money3;
         }
         public override  string ToString()
         {

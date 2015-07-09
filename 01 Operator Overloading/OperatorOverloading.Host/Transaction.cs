@@ -105,10 +105,10 @@ namespace OperatorOverloading.Host
             }
 
             Console.WriteLine();
-            Console.WriteLine(money1.ToString());
-            Console.WriteLine(money2.ToString());
+            Console.WriteLine(money1);
+            Console.WriteLine(money2);
             Console.WriteLine("After Addition:");
-            Console.WriteLine(money3.ToString());
+            Console.WriteLine(money3);
             
             Console.ReadKey();
         }
