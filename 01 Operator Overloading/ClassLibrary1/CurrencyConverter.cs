@@ -57,7 +57,16 @@ namespace OperatorOverloading.dbl
                 }
                 /*here is the logic for the inter conversion of currency.
                 i.e. i can convert from any currency to any other currency*/
-                double conversionRate = (conversionRate2 / conversionRate1);
+                double conversionRate = 0.0;
+                try
+                {
+                     conversionRate = (conversionRate2 / conversionRate1);
+                }
+                catch (Exception e)
+                {
+                    //here we r handling divide by zero exception
+                    throw e;
+                }
                 return conversionRate;
 
               
