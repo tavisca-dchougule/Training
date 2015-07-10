@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using OperatorOverloading.Model;
 
 namespace OperatorOverloading.dbl
 {
@@ -61,12 +60,7 @@ namespace OperatorOverloading.dbl
                 double conversionRate = (conversionRate2 / conversionRate1);
                 return conversionRate;
 
-               /* double convertedCurrency = 0.0;
-
-                convertedCurrency = (fromCurrency.Amount * conversionRate);
-                convertedCurrency.Currency = toCurrency.Currency;
-                return convertedCurrency;*/
-                //here convertedCurrency is a Money object which is returned. and it will consist answer i.e. converted rate.
+              
             }
         }
     

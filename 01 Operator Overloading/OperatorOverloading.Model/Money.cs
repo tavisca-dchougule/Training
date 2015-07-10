@@ -53,9 +53,13 @@ namespace OperatorOverloading.Model
                 //throw new CurrencyMismatchException();
                 try
                 {
-                    double conversionRate=0.0;
+                   double conversionRate=0.0;
                    conversionRate=  converter.ConvertCurrency(money2.Currency, money1.Currency);
                    money3.Amount = money1.Amount + (money2.Amount*conversionRate);
+                   if (double.IsInfinity(money3.Amount))// here we r checking whether range of double is exceeded or not....if yes then throw out of range exception
+                   {
+                       throw new OverflowException();
+                   }
                 }
                 catch (Exception e)
                 {

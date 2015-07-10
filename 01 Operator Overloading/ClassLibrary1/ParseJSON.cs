@@ -11,8 +11,8 @@ namespace OperatorOverloading.dbl
      this class implements IParser interface which has ParseFile method*/
     class ParseJSON : IParser
     {
-        //exchangeRates is a dictonary object which will consist of currency as a key, and conversion rate as value.
-        Dictionary<string, double> exchangeRates = new Dictionary<string, double>();
+        
+       
         public string Source
         {
             get;
@@ -25,11 +25,15 @@ namespace OperatorOverloading.dbl
             {
                 throw new ArgumentException(Resources.InvalidArgument);
             }
+            //exchangeRates is a dictonary object which will consist of currency as a key, and conversion rate as value.
+            Dictionary<string, double> exchangeRates = new Dictionary<string, double>();
+
             string data = builder;
             string[] dataSplit = data.Split('{');
             string tempData = dataSplit[1];
             string[] tempSplit1 = tempData.Split(',');
             tempSplit1 = tempSplit1[tempSplit1.Length - 2].Split(':');
+            tempSplit1[1] = tempSplit1[1].Trim();
             Source = tempSplit1[1];
 
             data = dataSplit[2];
@@ -38,7 +42,7 @@ namespace OperatorOverloading.dbl
             dataSplit = data.Split(',');
             for (int i = 0; i < dataSplit.Length; i++)
             {
-                dataSplit[i] = dataSplit[i].Replace("USD", "");
+                dataSplit[i] = dataSplit[i].Replace("USD","");
                 tempSplit1 = dataSplit[i].Split(':');
                 data = tempSplit1[0];
                 double value = 0.0;
