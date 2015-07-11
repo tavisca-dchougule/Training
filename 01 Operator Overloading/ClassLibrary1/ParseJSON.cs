@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using OperatorOverloading.Model;
+using OperatorOverloading.Interfaces;
+using ClassLibrary1;
 
 namespace OperatorOverloading.dbl
 {
@@ -34,8 +35,10 @@ namespace OperatorOverloading.dbl
             string[] tempSplit1 = tempData.Split(',');
             tempSplit1 = tempSplit1[tempSplit1.Length - 2].Split(':');
             tempSplit1[1] = tempSplit1[1].Trim();
+            tempSplit1[1]=tempSplit1[1].Remove(tempSplit1[1].Length-1,1);
+            tempSplit1[1]=tempSplit1[1].Remove(0,1);
             Source = tempSplit1[1];
-
+            
             data = dataSplit[2];
             data = data.Replace('}', ' ');
             data = data.Trim();

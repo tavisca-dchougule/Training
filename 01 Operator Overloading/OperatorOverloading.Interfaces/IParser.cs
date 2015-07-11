@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace OperatorOverloading.dbl
+namespace OperatorOverloading.Interfaces
 {
     /*IParser is a interface which consist of parseFile method.
      * this interface is implemented by the ParseJSON class.*/

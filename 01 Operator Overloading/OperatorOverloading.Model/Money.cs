@@ -30,6 +30,27 @@ namespace OperatorOverloading.Model
                 return _currency;
             }
         }
+        public Money Convert(String toCurrency)
+        {
+          //  Console.WriteLine(""+toCurrency+"      "+this.Currency);
+            
+            ExchangeRateProvider converter = new ExchangeRateProvider();
+            double exchangeRate=0.0;
+            try
+            {
+                exchangeRate = converter.GetExchangeRate(this.Currency, toCurrency);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            Money convertedMoney = new Money();
+            convertedMoney.Currency = toCurrency;
+            convertedMoney.Amount = this.Amount * exchangeRate;
+            return convertedMoney;
+
+            
+        }
         public static Money operator +(Money money1, Money money2) //this is operator overloaded function
         {
             if (money1 == null || money2 == null)
@@ -37,7 +58,7 @@ namespace OperatorOverloading.Model
                  throw new ArgumentException(Messages.InvalidArgument);
             }
             Money money3 = new Money();
-            CurrencyConverter converter = new CurrencyConverter();
+           
 
             if (string.Equals(money1.Currency, money2.Currency, StringComparison.OrdinalIgnoreCase)) //here we r checking whether the currencies of both money is same or not.. if not throw InvalidCurrencyException exception 
             {
@@ -50,21 +71,8 @@ namespace OperatorOverloading.Model
             }
             else
             {
-                //throw new CurrencyMismatchException();
-                try
-                {
-                   double conversionRate=0.0;
-                   conversionRate=  converter.ConvertCurrency(money2.Currency, money1.Currency);
-                   money3.Amount = money1.Amount + (money2.Amount*conversionRate);
-                   if (double.IsInfinity(money3.Amount))// here we r checking whether range of double is exceeded or not....if yes then throw out of range exception
-                   {
-                       throw new OverflowException();
-                   }
-                }
-                catch (Exception e)
-                {
-                    throw e;
-                }
+                throw new CurrencyMismatchException();
+             
             }
             money3.Currency = money1.Currency;
             return money3;

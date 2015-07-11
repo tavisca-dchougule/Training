@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 //using OperatorOverloading.Model;
 
-namespace OperatorOverloading.dbl
+namespace OperatorOverloading.Interfaces
 {
     /*ICurrencyConverter is a interface which consist of ConvertCurrency method.
      * this interface is implemented by the CurrencyConverter class.*/
-    public interface ICurrencyConverter
+    public interface IExchangeRateProvider
     {
-        double ConvertCurrency(string money1, string money2);
+        double GetExchangeRate(string money1, string money2);
     }
 }

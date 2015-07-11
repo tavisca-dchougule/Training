@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorOverloading.Model",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorOverloading.dbl", "..\ClassLibrary1\OperatorOverloading.dbl.csproj", "{D19ABD5E-2B86-4B1A-8E25-C3CE83C24E98}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorOverloading.Interfaces", "..\OperatorOverloading.Interfaces\OperatorOverloading.Interfaces.csproj", "{8C642B9B-63F8-40E2-B3FC-3BCC9994E029}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorOverloading.Host1", "OperatorOverloading.Host1\OperatorOverloading.Host1.csproj", "{F139E626-841A-4FF5-AC26-88A5B162A933}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,14 @@ Global
 		{D19ABD5E-2B86-4B1A-8E25-C3CE83C24E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D19ABD5E-2B86-4B1A-8E25-C3CE83C24E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D19ABD5E-2B86-4B1A-8E25-C3CE83C24E98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C642B9B-63F8-40E2-B3FC-3BCC9994E029}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C642B9B-63F8-40E2-B3FC-3BCC9994E029}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C642B9B-63F8-40E2-B3FC-3BCC9994E029}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C642B9B-63F8-40E2-B3FC-3BCC9994E029}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F139E626-841A-4FF5-AC26-88A5B162A933}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F139E626-841A-4FF5-AC26-88A5B162A933}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F139E626-841A-4FF5-AC26-88A5B162A933}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F139E626-841A-4FF5-AC26-88A5B162A933}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

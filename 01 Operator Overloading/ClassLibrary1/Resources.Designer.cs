@@ -8,8 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OperatorOverloading.dbl
-{
+namespace ClassLibrary1 {
     using System;
     
     
@@ -58,15 +57,6 @@ namespace OperatorOverloading.dbl
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to http://www.apilayer.net/api/live?access_key=9f011e5b35e7990d360073da30a7f8f2&amp;format=1.
-        /// </summary>
-        internal static string CurrencyURL {
-            get {
-                return ResourceManager.GetString("CurrencyURL", resourceCulture);
             }
         }
         
