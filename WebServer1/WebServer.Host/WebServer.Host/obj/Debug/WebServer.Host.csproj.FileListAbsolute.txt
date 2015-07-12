@@ -1,0 +1,8 @@
+D:\WebServer1\WebServer.Host\WebServer.Host\bin\Debug\WebServer.Host.exe.config
+D:\WebServer1\WebServer.Host\WebServer.Host\bin\Debug\WebServer.Host.exe
+D:\WebServer1\WebServer.Host\WebServer.Host\bin\Debug\WebServer.Host.pdb
+D:\WebServer1\WebServer.Host\WebServer.Host\obj\Debug\WebServer.Host.csprojResolveAssemblyReference.cache
+D:\WebServer1\WebServer.Host\WebServer.Host\obj\Debug\WebServer.Host.exe
+D:\WebServer1\WebServer.Host\WebServer.Host\obj\Debug\WebServer.Host.pdb
+D:\WebServer1\WebServer.Host\WebServer.Host\bin\Debug\WebServer.Model.dll
+D:\WebServer1\WebServer.Host\WebServer.Host\bin\Debug\WebServer.Model.pdb
