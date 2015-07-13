@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,22 +41,31 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationPool.cs" />
-    <Compile Include="ApplicationPoolMapping.Designer.cs">
+    <Compile Include="Dispatcher.cs" />
+    <Compile Include="RequestListener.cs" />
+    <Compile Include="Messages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ApplicationPoolMapping.resx</DependentUpon>
+      <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
-    <Compile Include="Dispatcher.cs" />
-    <Compile Include="FileHandler.cs" />
-    <Compile Include="RequestListener.cs" />
     <Compile Include="WebServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ApplicationPoolMapping.resx">
+    <EmbeddedResource Include="Messages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ApplicationPoolMapping.Designer.cs</LastGenOutput>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebServer.Handlers\WebServer.Handlers.csproj">
+      <Project>{f45c840f-8889-4aa6-93ea-3d9eabf674e3}</Project>
+      <Name>WebServer.Handlers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebServer.Interfaces\WebServer.Interfaces.csproj">
+      <Project>{c258048f-10fa-4f93-8687-439dfef06d12}</Project>
+      <Name>WebServer.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

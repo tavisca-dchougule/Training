@@ -6,3 +6,15 @@ D:\WebServer1\WebServer.Host\WebServer.Host\obj\Debug\WebServer.Host.exe
 D:\WebServer1\WebServer.Host\WebServer.Host\obj\Debug\WebServer.Host.pdb
 D:\WebServer1\WebServer.Host\WebServer.Host\bin\Debug\WebServer.Model.dll
 D:\WebServer1\WebServer.Host\WebServer.Host\bin\Debug\WebServer.Model.pdb
+D:\Training\WebServer1\WebServer.Host\WebServer.Host\bin\Debug\WebServer.Host.exe.config
+D:\Training\WebServer1\WebServer.Host\WebServer.Host\obj\Debug\WebServer.Host.exe
+D:\Training\WebServer1\WebServer.Host\WebServer.Host\obj\Debug\WebServer.Host.pdb
+D:\Training\WebServer1\WebServer.Host\WebServer.Host\bin\Debug\WebServer.Host.exe
+D:\Training\WebServer1\WebServer.Host\WebServer.Host\bin\Debug\WebServer.Host.pdb
+D:\Training\WebServer1\WebServer.Host\WebServer.Host\bin\Debug\WebServer.Model.dll
+D:\Training\WebServer1\WebServer.Host\WebServer.Host\bin\Debug\WebServer.Model.pdb
+D:\Training\WebServer1\WebServer.Host\WebServer.Host\obj\Debug\WebServer.Host.csprojResolveAssemblyReference.cache
+D:\Training\WebServer1\WebServer.Host\WebServer.Host\bin\Debug\WebServer.Interfaces.dll
+D:\Training\WebServer1\WebServer.Host\WebServer.Host\bin\Debug\WebServer.Handlers.dll
+D:\Training\WebServer1\WebServer.Host\WebServer.Host\bin\Debug\WebServer.Interfaces.pdb
+D:\Training\WebServer1\WebServer.Host\WebServer.Host\bin\Debug\WebServer.Handlers.pdb

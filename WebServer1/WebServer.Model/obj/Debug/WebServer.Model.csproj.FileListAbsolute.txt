@@ -5,3 +5,14 @@ D:\WebServer1\WebServer.Model\obj\Debug\WebServer.Model.dll
 D:\WebServer1\WebServer.Model\obj\Debug\WebServer.Model.pdb
 D:\WebServer1\WebServer.Model\obj\Debug\WebServer.Model.ApplicationPoolMapping.resources
 D:\WebServer1\WebServer.Model\obj\Debug\WebServer.Model.csproj.GenerateResource.Cache
+D:\Training\WebServer1\WebServer.Model\bin\Debug\WebServer.Model.dll
+D:\Training\WebServer1\WebServer.Model\bin\Debug\WebServer.Model.pdb
+D:\Training\WebServer1\WebServer.Model\obj\Debug\WebServer.Model.csprojResolveAssemblyReference.cache
+D:\Training\WebServer1\WebServer.Model\obj\Debug\WebServer.Model.csproj.GenerateResource.Cache
+D:\Training\WebServer1\WebServer.Model\obj\Debug\WebServer.Model.dll
+D:\Training\WebServer1\WebServer.Model\obj\Debug\WebServer.Model.pdb
+D:\Training\WebServer1\WebServer.Model\bin\Debug\WebServer.Handlers.dll
+D:\Training\WebServer1\WebServer.Model\bin\Debug\WebServer.Interfaces.dll
+D:\Training\WebServer1\WebServer.Model\bin\Debug\WebServer.Handlers.pdb
+D:\Training\WebServer1\WebServer.Model\bin\Debug\WebServer.Interfaces.pdb
+D:\Training\WebServer1\WebServer.Model\obj\Debug\WebServer.Model.Messages.resources

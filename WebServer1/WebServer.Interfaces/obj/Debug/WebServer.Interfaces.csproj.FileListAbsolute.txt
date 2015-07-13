@@ -1,0 +1,5 @@
+D:\Training\WebServer1\WebServer.Interfaces\obj\Debug\WebServer.Interfaces.csprojResolveAssemblyReference.cache
+D:\Training\WebServer1\WebServer.Interfaces\bin\Debug\WebServer.Interfaces.dll
+D:\Training\WebServer1\WebServer.Interfaces\bin\Debug\WebServer.Interfaces.pdb
+D:\Training\WebServer1\WebServer.Interfaces\obj\Debug\WebServer.Interfaces.dll
+D:\Training\WebServer1\WebServer.Interfaces\obj\Debug\WebServer.Interfaces.pdb

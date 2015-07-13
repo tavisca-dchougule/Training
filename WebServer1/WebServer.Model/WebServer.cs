@@ -12,50 +12,19 @@ namespace WebServer.Model
 {
     public class WebServer1
     {
-      //  private static Dictionary<string, string> _applicationPoolMapping = new Dictionary<string, string>();
+     
         private static List<Socket> _clientList = new List<Socket>();
-        private bool _running = false;
-        private int _timeout = 5;
+        private int _timeout = 120;
         private Encoding _charEncoder = Encoding.UTF8;
         private Socket _serverSocket;
 
         // Directory to host our contents
         private string _contentPath;
 
-        public string GetContentPath()
-        {
-            return _contentPath;
-        }
-
-       /* public static string GetApplicationPool(string requestType)
-        {
-            string method="";
-            requestType = requestType.Remove(0,1);
-            
-            if (_applicationPoolMapping.TryGetValue(requestType, out method) == false)
-                return "DefaultHandler";
-            return method;
-        }*/
-        public void AddClient(Socket socket)
-        {
-            _clientList.Add(socket);
-        }
-
         public void Start(int port, string contentPath)
         {
-            /*while (true)
-            {
-                string name="";
-                string value="";
-                ResourceSet resourceSet = MyResourceClass.ResourceManager.GetResourceSet(CultureInfo.CurrentUICulture, true, true);
-                foreach (DictionaryEntry entry in resourceSet)
-                {
-                    string resourceKey = entry.Key;
-                    object resource = entry.Value;
-                }
-             
-             //   _applicationPoolMapping.Add(ApplicationPoolMapping.
-            }*/
+            if (contentPath == null)
+                throw new ArgumentException(Messages.InvalidArgument);
             try
             {
                // InitializeSocket(port, contentPath);
@@ -64,32 +33,32 @@ namespace WebServer.Model
                 _serverSocket.Listen(int.MaxValue);    //no of request in queue
                 _serverSocket.ReceiveTimeout = _timeout;
                 _serverSocket.SendTimeout = _timeout;
-                _running = true; //socket created
                 _contentPath = contentPath;
             }
             catch
             {
-                Console.WriteLine("Error in creating server socker");
-                Console.ReadLine();
-
             }
-            
+
+            try
+            {
                 RequestListener requestListener = new RequestListener(_serverSocket, contentPath);
                 Thread startListener = new Thread(new ThreadStart(requestListener.Listen));
                 startListener.Start();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
         public void Stop()
         {
-            _running = false;
+           
             try
             {
                 _serverSocket.Close();
             }
             catch
             {
-                Console.WriteLine("Error in closing server or server already closed");
-                Console.ReadLine();
-
             }
             _serverSocket = null;
         }

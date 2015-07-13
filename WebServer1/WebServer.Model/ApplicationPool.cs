@@ -4,103 +4,91 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Sockets;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
+using WebServer.Interfaces;
+using WebServer.Handlers;
+using System.Configuration;
 
 namespace WebServer.Model
 {
     class ApplicationPool
     {
-        private Socket _clientSocket;
-        private string _contentPath;
-        RegistryKey registryKey = Registry.ClassesRoot;
+          private Socket _clientSocket;
+          private string _contentPath;
+          private Encoding _charEncoder = Encoding.UTF8;
+          private  string _requestedFile;
+          private string _fileExtension;
 
-        private Encoding _charEncoder = Encoding.UTF8;
-        public FileHandler FileHandler;
-        string _requestedFile;
-        public ApplicationPool(Socket clientSocket,string contentPath,string requestedFile)
+          public ApplicationPool(Socket clientSocket,string contentPath,string requestedFile)
+          {
+              _requestedFile = requestedFile;
+              _clientSocket = clientSocket;
+              _contentPath = contentPath;
+          }
+        private  string Map()
+          {
+              _fileExtension = Path.GetExtension(_contentPath + _requestedFile);
+            
+              try
+              {
+                  _fileExtension = _fileExtension.Remove(0, 1);
+              }
+              catch 
+              {
+                  _fileExtension = "";
+              }
+              string handler = ConfigurationManager.AppSettings[_fileExtension];
+
+              if (handler == null)
+              {
+                  throw new Exception(Messages.InvalidRequest);
+              }
+              return handler;
+          }
+       private  IRequestHandler GetHandler()
         {
-            _requestedFile = requestedFile;
-            _clientSocket = clientSocket;
-            _contentPath = contentPath;
-            FileHandler = new FileHandler(_contentPath);
-        }
-        public void ResponseHtml()
-        {
-            Console.WriteLine("in html");
-            RequestUrl(_requestedFile);
-        }
-        public void ResponseJs()
-        {
-            Console.WriteLine("in js");
-            RequestUrl(_requestedFile);
-        }
-        public void ResponseCss()
-        {
-            Console.WriteLine("in css");
-            RequestUrl(_requestedFile);
-        }
-        public void DefaultHandler()
-        {
-            Console.WriteLine("in default");
-            RequestUrl(_requestedFile);
-        }
-        public void RequestUrl(string requestedFile)
-        {
-            int dotIndex = requestedFile.LastIndexOf('.') + 1;
-            if (dotIndex > 0)
+            
+            IRequestHandler handler = null;
+            string input = "";
+           try
             {
-                if (FileHandler.DoesFileExists(requestedFile))    //If yes check existence of the file
-                    SendResponse(_clientSocket, FileHandler.ReadFile(requestedFile), "200 Ok", GetTypeOfFile(registryKey, (_contentPath + requestedFile)));
-                else
-                    SendErrorResponce(_clientSocket);      // We don't support this extension.
+                 input = Map();
             }
-            else   //find default file as index .htm of index.html
+           catch (Exception e) { throw e; }
+            switch(input)
             {
-                if (FileHandler.DoesFileExists("\\index.htm"))
-                    SendResponse(_clientSocket, FileHandler.ReadFile("\\index.htm"), "200 Ok", "text/html");
-                else if (FileHandler.DoesFileExists("\\index.html"))
-                    SendResponse(_clientSocket, FileHandler.ReadFile("\\index.html"), "200 Ok", "text/html");
-                else
-                    SendErrorResponce(_clientSocket);
+                case "ResponseHtml":
+                case "ResponseHtm":
+                    handler=new HttpRequestHandler(_clientSocket, _contentPath, _requestedFile);
+                    break;
+                case "ResponseCss":
+                    handler = new CssRequestHandler(_clientSocket, _contentPath, _requestedFile);
+                    break;
+                case "ResponseJs":
+                    handler = new JsRequestHandler(_clientSocket, _contentPath, _requestedFile);
+                    break;
+               
             }
+            return handler;
+
         }
-
-        private string GetTypeOfFile(RegistryKey registryKey, string fileName)
+        public void Start()
         {
-            RegistryKey fileClass = registryKey.OpenSubKey(Path.GetExtension(fileName));
-            return fileClass.GetValue("Content Type").ToString();
-        }
-
-        private void SendErrorResponce(Socket clientSocket)
-        {
-            SendResponse(clientSocket, null, "404 Not Found", "text/html");
-        }
-
-
-        private void SendResponse(Socket clientSocket, byte[] byteContent, string responseCode, string contentType)
-        {
+            if (_clientSocket == null || _contentPath == null || _requestedFile == null)
+                throw new NullReferenceException(Messages.NullReference);
+           
             try
             {
-              
-                byte[] byteHeader = CreateHeader(responseCode, byteContent.Length, contentType);
-                clientSocket.Send(byteHeader);
-                clientSocket.Send(byteContent);
-
-                clientSocket.Close();
+                IRequestHandler handler = GetHandler();
+                if(handler!=null)
+                handler.SendResponse();
             }
-            catch
+            catch 
             {
+                _clientSocket.Close();
             }
-        }
-
-        private byte[] CreateHeader(string responseCode, int contentLength, string contentType)
-        {
-            return _charEncoder.GetBytes("HTTP/1.1 " + responseCode + "\r\n"
-                                  + "Server: Simple Web Server\r\n"
-                                  + "Content-Length: " + contentLength + "\r\n"
-                                  + "Connection: close\r\n"
-                                  + "Content-Type: " + contentType + "\r\n\r\n");
         }
     }
 }
