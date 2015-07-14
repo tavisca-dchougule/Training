@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebServer.Model;
+using System.Configuration;
 
 namespace WebServer.Host
 {
@@ -14,7 +15,8 @@ namespace WebServer.Host
             WebServer1 webServer = new WebServer1();
             try
             {
-                webServer.Start(8080, @"D:\web source\startbootstrap-sb-admin-1.0.3");
+                string path = ConfigurationManager.AppSettings["path"];
+                webServer.Start(8080, path);
             }
             catch
             { }
