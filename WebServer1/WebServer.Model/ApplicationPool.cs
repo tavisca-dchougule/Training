@@ -27,7 +27,7 @@ namespace WebServer.Model
               _clientSocket = clientSocket;
               _contentPath = contentPath;
           }
-        private  string Map()
+        private  string MapHandler()
           {
               _fileExtension = Path.GetExtension(_contentPath + _requestedFile);
             
@@ -43,7 +43,9 @@ namespace WebServer.Model
 
               if (handler == null)
               {
-                  throw new Exception(Messages.InvalidRequest);
+                  byte[] temp = new byte[0];
+                  SendResponse(temp, "501 Not Implemented", "text/html");
+                 
               }
               return handler;
           }
@@ -52,11 +54,8 @@ namespace WebServer.Model
             
             IRequestHandler handler = null;
             string input = "";
-           try
-            {
-                 input = Map();
-            }
-           catch (Exception e) { throw e; }
+             input = MapHandler();
+           
             switch(input)
             {
                 case "ResponseHtml":
@@ -69,6 +68,9 @@ namespace WebServer.Model
                 case "ResponseJs":
                     handler = new JsRequestHandler(_clientSocket, _contentPath, _requestedFile);
                     break;
+                case "ResponseIco":
+                    handler = new IcoRequestHandler(_clientSocket, _contentPath, _requestedFile);
+                    break;
                
             }
             return handler;
@@ -79,16 +81,33 @@ namespace WebServer.Model
             if (_clientSocket == null || _contentPath == null || _requestedFile == null)
                 throw new NullReferenceException(Messages.NullReference);
            
-            try
-            {
-                IRequestHandler handler = GetHandler();
+            
+                IRequestHandler handler = this.GetHandler();
                 if(handler!=null)
                 handler.SendResponse();
-            }
-            catch 
+            
+        }
+        private void SendResponse( byte[] byteContent, string responseCode, string contentType)
+        {
+            try
             {
+                byte[] byteHeader = CreateHeader(responseCode, byteContent.Length, contentType);
+                _clientSocket.Send(byteHeader);
+                _clientSocket.Send(byteContent);
                 _clientSocket.Close();
             }
+            catch
+            {
+            }
+        }
+
+        private byte[] CreateHeader(string responseCode, int contentLength, string contentType)
+        {
+            return _charEncoder.GetBytes("HTTP/1.1 " + responseCode + "\r\n"
+                                  + "Server: Simple Web Server\r\n"
+                                  + "Content-Length: " + contentLength + "\r\n"
+                                  + "Connection: close\r\n"
+                                  + "Content-Type: " + contentType + "\r\n\r\n");
         }
     }
 }

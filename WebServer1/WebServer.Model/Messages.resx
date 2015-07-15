@@ -120,10 +120,10 @@
   <data name="InvalidArgument" xml:space="preserve">
     <value>Invalid Argument.</value>
   </data>
-  <data name="InvalidRequest" xml:space="preserve">
-    <value>Invalid Request.</value>
-  </data>
   <data name="NullReference" xml:space="preserve">
     <value>Null Reference.</value>
+  </data>
+  <data name="UnregisteredHandler" xml:space="preserve">
+    <value>Unregistered Handler.</value>
   </data>
 </root>

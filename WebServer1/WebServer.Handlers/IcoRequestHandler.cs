@@ -10,15 +10,15 @@ using WebServer.Interfaces;
 
 namespace WebServer.Handlers
 {
-    public class HttpRequestHandler : IRequestHandler
+   public class IcoRequestHandler : IRequestHandler
     {
-        private Socket _clientSocket;
+         private Socket _clientSocket;
         private string _contentPath;
         private RegistryKey _registryKey = Registry.ClassesRoot;
         private Encoding _charEncoder = Encoding.UTF8;
         private string _requestedFile;
 
-        public HttpRequestHandler(Socket clientSocket, string contentPath, string requestedFile)
+        public IcoRequestHandler(Socket clientSocket, string contentPath, string requestedFile)
         {
             _requestedFile = requestedFile;
             _clientSocket = clientSocket;

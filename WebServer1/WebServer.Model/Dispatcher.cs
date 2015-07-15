@@ -36,23 +36,25 @@ namespace WebServer.Model
              
                  try
                  {
-                     DecodeRequest(_clientSocket);
+                     this.DecodeRequest();
                      ApplicationPool responseHandler = new ApplicationPool(_clientSocket, _contentPath, HttpUrl);
-                     Thread startApplicationPool = new Thread(new ThreadStart(responseHandler.Start));
-                     startApplicationPool.Start();
+                     responseHandler.Start();
+                   //  Thread startApplicationPool = new Thread(new ThreadStart(responseHandler.Start));
+                    // startApplicationPool.Start();
                  }
                  catch
                  {   
                  }
         }
         
-        private void DecodeRequest(Socket clientSocket)
+        private void DecodeRequest()
         {
             var receivedBufferlen = 0;
             var buffer = new byte[10240];
+           
             try
             {
-                receivedBufferlen = clientSocket.Receive(buffer);
+                receivedBufferlen = _clientSocket.Receive(buffer);
             }
             catch (Exception e)
             {

@@ -14,8 +14,8 @@ namespace WebServer.Model
     {
      
         private static List<Socket> _clientList = new List<Socket>();
-        private int _timeout = 120;
-        private Encoding _charEncoder = Encoding.UTF8;
+       // private int _timeout = 120;
+        private Encoding _charEncoder = Encoding.UTF32;
         private Socket _serverSocket;
 
         // Directory to host our contents
@@ -27,12 +27,11 @@ namespace WebServer.Model
                 throw new ArgumentException(Messages.InvalidArgument);
             try
             {
-               // InitializeSocket(port, contentPath);
                 _serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 _serverSocket.Bind(new IPEndPoint(IPAddress.Any, port));
                 _serverSocket.Listen(int.MaxValue);    //no of request in queue
-                _serverSocket.ReceiveTimeout = _timeout;
-                _serverSocket.SendTimeout = _timeout;
+                //_serverSocket.ReceiveTimeout = _timeout;
+                //_serverSocket.SendTimeout = _timeout;
                 _contentPath = contentPath;
             }
             catch
@@ -42,8 +41,9 @@ namespace WebServer.Model
             try
             {
                 RequestListener requestListener = new RequestListener(_serverSocket, contentPath);
-                Thread startListener = new Thread(new ThreadStart(requestListener.Listen));
-                startListener.Start();
+                requestListener.Listen();
+               // Thread startListener = new Thread(new ThreadStart(requestListener.Listen));
+                //startListener.Start();
             }
             catch (Exception e)
             {

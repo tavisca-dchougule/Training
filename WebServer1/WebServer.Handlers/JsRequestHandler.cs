@@ -27,7 +27,7 @@ namespace WebServer.Handlers
 
         public void SendResponse()
         {
-           // Console.WriteLine("In Default.");
+          
             if (_clientSocket == null || _contentPath == null || _requestedFile == null)
                 throw new NullReferenceException(Messages.NullReference);
 
@@ -38,52 +38,67 @@ namespace WebServer.Handlers
                 {
                     //If yes check existence of the file
                     byte[] content = File.ReadAllBytes(_contentPath + _requestedFile);
-                    SendResponse(_clientSocket, content, "200 Ok", GetTypeOfFile((_contentPath + _requestedFile)));
+                    SendResponse( content, "200 Ok", GetTypeOfFile());
+
+
                 }
                 else
                 {
                     byte[] temp = new byte[0];
-                    SendResponse(_clientSocket, temp, "404 Not Found", "text/html");    // We don't support this extension.
+
+                    SendResponse( temp, "404 Not Found", "text/html");    // We don't support this extension.
+
                 }
             }
             else   //find default file as index .htm of index.html
             {
+
                 if (File.Exists(_contentPath + "\\index.htm"))
                 {
                     byte[] content = File.ReadAllBytes(_contentPath + "\\index.htm");
-                    SendResponse(_clientSocket, content, "200 Ok", "text/html");
+
+                    SendResponse( content, "200 Ok", "text/html");
+
+
                 }
                 else if (File.Exists(_contentPath + "\\index.html"))
                 {
                     byte[] content = File.ReadAllBytes(_contentPath + "\\index.html");
-                    SendResponse(_clientSocket, content, "200 Ok", "text/html");
+
+                    SendResponse( content, "200 Ok", "text/html");
                 }
 
                 else
                 {
                     byte[] temp = new byte[0];
-                    SendResponse(_clientSocket, temp, "404 Not Found", "text/html");
+
+                    SendResponse(temp, "404 Not Found", "text/html");
                 }
+
+
             }
         }
 
-        private string GetTypeOfFile(string fileName)
+        private string GetTypeOfFile()
         {
-            RegistryKey fileClass = _registryKey.OpenSubKey(Path.GetExtension(fileName));
+            RegistryKey fileClass = _registryKey.OpenSubKey(Path.GetExtension(_contentPath+_requestedFile));
             return fileClass.GetValue("Content Type").ToString();
         }
 
-        private void SendResponse(Socket clientSocket, byte[] byteContent, string responseCode, string contentType)
+        private void SendResponse( byte[] byteContent, string responseCode, string contentType)
         {
             try
             {
+
                 byte[] byteHeader = CreateHeader(responseCode, byteContent.Length, contentType);
-                clientSocket.Send(byteHeader);
-                clientSocket.Send(byteContent);
-                clientSocket.Close();
+                _clientSocket.Send(byteHeader);
+                _clientSocket.Send(byteContent);
+
+                _clientSocket.Close();
             }
             catch
             {
+
             }
         }
 

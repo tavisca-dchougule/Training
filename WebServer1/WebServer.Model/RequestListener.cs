@@ -11,7 +11,7 @@ namespace WebServer.Model
     class RequestListener
     {
         private Socket _serverSocket;
-        private int _timeout;
+        //private int _timeout;
         private string _contentPath;
         private Encoding _charEncoder = Encoding.UTF8;
         private bool _running = false;
@@ -19,7 +19,7 @@ namespace WebServer.Model
         public RequestListener(Socket serverSocket, String contentPath)
         {
             _serverSocket = serverSocket;
-            _timeout = 120;
+          //  _timeout = 120;
             _contentPath = contentPath;
             _running = true;
         }
@@ -36,8 +36,8 @@ namespace WebServer.Model
                   
                     clientSocket = _serverSocket.Accept();
                     
-                    clientSocket.ReceiveTimeout = _timeout;
-                    clientSocket.SendTimeout = _timeout; 
+                 //   clientSocket.ReceiveTimeout = _timeout;
+                  //  clientSocket.SendTimeout = _timeout; 
 
                     Dispatcher dispatcher = new Dispatcher(clientSocket,_contentPath);
                     Thread startDispatcher = new Thread(new ThreadStart(dispatcher.Start));

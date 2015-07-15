@@ -15,11 +15,15 @@ namespace WebServer.Host
             WebServer1 webServer = new WebServer1();
             try
             {
-                string path = ConfigurationManager.AppSettings["path"];
-                webServer.Start(8080, path);
+                string sourcePath = ConfigurationManager.AppSettings["Path"];
+                int port = int.Parse(ConfigurationManager.AppSettings["PortNumber"]);
+                webServer.Start(port, sourcePath);
             }
-            catch
-            { }
+            catch(Exception e)
+            {
+                throw e;
+                //Console.WriteLine(e.Message);
+            }
             Console.ReadKey();
         }
     }

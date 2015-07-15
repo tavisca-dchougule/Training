@@ -70,20 +70,20 @@ namespace WebServer.Model {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid Request..
-        /// </summary>
-        internal static string InvalidRequest {
-            get {
-                return ResourceManager.GetString("InvalidRequest", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Null Reference..
         /// </summary>
         internal static string NullReference {
             get {
                 return ResourceManager.GetString("NullReference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unregistered Handler..
+        /// </summary>
+        internal static string UnregisteredHandler {
+            get {
+                return ResourceManager.GetString("UnregisteredHandler", resourceCulture);
             }
         }
     }
