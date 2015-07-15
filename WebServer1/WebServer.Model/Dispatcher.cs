@@ -39,8 +39,7 @@ namespace WebServer.Model
                      this.DecodeRequest();
                      ApplicationPool responseHandler = new ApplicationPool(_clientSocket, _contentPath, HttpUrl);
                      responseHandler.Start();
-                   //  Thread startApplicationPool = new Thread(new ThreadStart(responseHandler.Start));
-                    // startApplicationPool.Start();
+                   
                  }
                  catch
                  {   

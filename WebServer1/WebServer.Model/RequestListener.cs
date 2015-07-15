@@ -35,10 +35,12 @@ namespace WebServer.Model
                 {
                   
                     clientSocket = _serverSocket.Accept();
-                    
-                 //   clientSocket.ReceiveTimeout = _timeout;
-                  //  clientSocket.SendTimeout = _timeout; 
-
+                    if (WebServer1.IsSocketListFull() == true)
+                    {
+                        byte[] temp = new byte[0];
+                        this.SendResponse(clientSocket, temp, "503 Service Unavailable", "text/html");
+                    }
+                    WebServer1.AddSocket(clientSocket);
                     Dispatcher dispatcher = new Dispatcher(clientSocket,_contentPath);
                     Thread startDispatcher = new Thread(new ThreadStart(dispatcher.Start));
                     startDispatcher.Start();
@@ -46,8 +48,7 @@ namespace WebServer.Model
                 }
                 catch
                 {
-                    if (clientSocket != null)
-                        clientSocket.Close();
+                   
                 }
             }
         }
@@ -58,6 +59,28 @@ namespace WebServer.Model
             _running = false;
         }
 
+        private void SendResponse(Socket clientSocket,byte[] byteContent, string responseCode, string contentType)
+        {
+            try
+            {
+                byte[] byteHeader = CreateHeader(responseCode, byteContent.Length, contentType);
+                clientSocket.Send(byteHeader);
+                clientSocket.Send(byteContent);
+                clientSocket.Close();
+            }
+            catch
+            {
+            }
+        }
+
+        private byte[] CreateHeader(string responseCode, int contentLength, string contentType)
+        {
+            return _charEncoder.GetBytes("HTTP/1.1 " + responseCode + "\r\n"
+                                  + "Server: Simple Web Server\r\n"
+                                  + "Content-Length: " + contentLength + "\r\n"
+                                  + "Connection: close\r\n"
+                                  + "Content-Type: " + contentType + "\r\n\r\n");
+        }
        
     }
 }

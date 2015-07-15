@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -17,9 +18,28 @@ namespace WebServer.Model
        // private int _timeout = 120;
         private Encoding _charEncoder = Encoding.UTF32;
         private Socket _serverSocket;
-
+        private static List<Socket> _socketList = new List<Socket>();
         // Directory to host our contents
         private string _contentPath;
+
+        public static void AddSocket(Socket socket)
+        {
+            _socketList.Add(socket);
+        }
+        public static void RemoveSocket(Socket socket)
+        {
+            _socketList.Remove(socket);
+        }
+        public static bool IsSocketListFull()
+        {
+            int requestLength = int.Parse(ConfigurationManager.AppSettings["MaxRequestLength"]);
+            if (_socketList.Count() >= requestLength)
+                return true;
+            else
+                return false;
+        }
+       
+
 
         public void Start(int port, string contentPath)
         {

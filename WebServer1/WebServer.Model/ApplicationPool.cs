@@ -8,8 +8,8 @@ using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using WebServer.Interfaces;
-using WebServer.Handlers;
 using System.Configuration;
+using WebServer.Handlers;
 
 namespace WebServer.Model
 {
@@ -83,9 +83,13 @@ namespace WebServer.Model
            
             
                 IRequestHandler handler = this.GetHandler();
-                if(handler!=null)
-                handler.SendResponse();
-            
+                if (handler != null)
+                {
+                    handler.SendResponse();
+                    WebServer1.RemoveSocket(_clientSocket);
+                    _clientSocket.Close();
+                }
+                     
         }
         private void SendResponse( byte[] byteContent, string responseCode, string contentType)
         {
@@ -94,6 +98,7 @@ namespace WebServer.Model
                 byte[] byteHeader = CreateHeader(responseCode, byteContent.Length, contentType);
                 _clientSocket.Send(byteHeader);
                 _clientSocket.Send(byteContent);
+                WebServer1.RemoveSocket(_clientSocket);
                 _clientSocket.Close();
             }
             catch

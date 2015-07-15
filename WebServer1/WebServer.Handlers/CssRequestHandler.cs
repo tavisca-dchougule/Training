@@ -93,7 +93,7 @@ namespace WebServer.Handlers
                 byte[] byteHeader = CreateHeader(responseCode, byteContent.Length, contentType);
                 _clientSocket.Send(byteHeader);
                 _clientSocket.Send(byteContent);
-
+             //   WebServer1.RemoveSocket(_clientSocket);
                 _clientSocket.Close();
             }
             catch
