@@ -1,0 +1,7 @@
+D:\Training\Testing\Tavisca.Testing\Tavisca.Testing.Model\bin\Debug\Tavisca.Testing.Model.dll
+D:\Training\Testing\Tavisca.Testing\Tavisca.Testing.Model\bin\Debug\Tavisca.Testing.Model.pdb
+D:\Training\Testing\Tavisca.Testing\Tavisca.Testing.Model\obj\Debug\Tavisca.Testing.Model.csprojResolveAssemblyReference.cache
+D:\Training\Testing\Tavisca.Testing\Tavisca.Testing.Model\obj\Debug\Tavisca.Testing.Model.dll
+D:\Training\Testing\Tavisca.Testing\Tavisca.Testing.Model\obj\Debug\Tavisca.Testing.Model.pdb
+D:\Training\Testing\Tavisca.Testing\Tavisca.Testing.Model\bin\Debug\Tavisca.Testing.CustomAttributes.dll
+D:\Training\Testing\Tavisca.Testing\Tavisca.Testing.Model\bin\Debug\Tavisca.Testing.CustomAttributes.pdb
