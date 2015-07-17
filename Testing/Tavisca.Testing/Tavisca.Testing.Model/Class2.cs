@@ -14,10 +14,12 @@ namespace Tavisca.Testing.Model
             {
             }
              [Ignore]
+            [TestMethod]
             public void Test2()
             {
             }
-            [Category("Smoke Test")]
+             [TestMethod]
+             [Category("Smoke Test")]
             public void Test3()
             {
             }

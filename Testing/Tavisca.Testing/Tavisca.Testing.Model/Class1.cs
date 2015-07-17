@@ -12,7 +12,8 @@ namespace Tavisca.Testing.Model
         public void Test1()
         {
         }
-        [Category("Smoke Test")]
+       [TestMethod]
+       [Category("Smoke Test")]
         public void Test2()
         {
         }

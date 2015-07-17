@@ -1,4 +1,3 @@
-D:\Training\Testing\Tavisca.Testing\Tavisca.Testing.CustomAttributes\obj\Debug\Tavisca.Testing.CustomAttributes.csprojResolveAssemblyReference.cache
 D:\Training\Testing\Tavisca.Testing\Tavisca.Testing.CustomAttributes\bin\Debug\Tavisca.Testing.CustomAttributes.dll
 D:\Training\Testing\Tavisca.Testing\Tavisca.Testing.CustomAttributes\bin\Debug\Tavisca.Testing.CustomAttributes.pdb
 D:\Training\Testing\Tavisca.Testing\Tavisca.Testing.CustomAttributes\obj\Debug\Tavisca.Testing.CustomAttributes.dll

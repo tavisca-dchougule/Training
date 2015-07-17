@@ -14,11 +14,16 @@ namespace Tavisca.Training.Host
 
         static void Main(string[] args)
         {
+            if (args.Length != 2)
+            {
+                Console.WriteLine("Invalid Arguments.");
+                Console.ReadKey();
+                return;
+            }
             Assembly assembly = null;
             try
             {
                  assembly = Assembly.LoadFrom(args[0]);
-
             }
             catch (Exception e)
             {
@@ -26,62 +31,39 @@ namespace Tavisca.Training.Host
                 Console.ReadKey();
                 return;
             }
-            Console.WriteLine("Enter category:");
-            string category = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(category) == true)
+            string category = "";
+            try
             {
-                Console.WriteLine("Invalid Category.");
+                category = args[1];
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
                 Console.ReadKey();
                 return;
             }
             
             foreach (Type type in assembly.GetTypes()) //test for each class in assembly
             {
-                 if (type.IsClass)
-                 {
-                     Attribute[] ClassAttributes = Attribute.GetCustomAttributes(type);  // Reflection.
-                     foreach (Attribute attribute in ClassAttributes) //test for each attribute of that class   
-                     {
-                         if (attribute is TestClassAttribute)
-                         {
+                  if (type.IsClass && TestClassAttribute.Exists(type))
+                  {
                              Console.WriteLine("class name: {0}", type.FullName);
-                             MethodInfo[] myArrayMethodInfo = type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+                            
+                            foreach (MethodInfo method in (type.GetMethods()))
+                            { 
+                                if (TestMethodAttribute.Exists(method))
+                                {
+                                    if (IgnoreAttribute.Exists(method))
+                                    {    
+                                      Console.WriteLine("Ignored  method: {0}", method.Name);   
+                                    }
 
-                             for (int i = 0; i < myArrayMethodInfo.Length; i++)//test for each method in that class
-                             {
-                                 Attribute[] methodAttributes = myArrayMethodInfo[i].GetCustomAttributes().ToArray();
-                                 foreach (Attribute methodAttribute in methodAttributes)
-                                 {
-
-                                     if (methodAttribute is IgnoreAttribute)
-                                     {
-                                         Console.WriteLine("Ignore Method: {0}", myArrayMethodInfo[i].Name);
-
-                                     }
-                                     if (methodAttribute is TestMethodAttribute)
-                                     {
-                                         Console.WriteLine("Test Method: {0}", myArrayMethodInfo[i].Name);
-
-
-                                     }
-                                     if (methodAttribute is CategoryAttribute)
-                                     {
-                                         CategoryAttribute categoryAttribute = methodAttribute as CategoryAttribute;
-                                         if (string.Equals(category, categoryAttribute.Category, StringComparison.OrdinalIgnoreCase))
-                                         {
-                                             Console.WriteLine("Category Method: {0} with category: {1}", myArrayMethodInfo[i].Name, category);
-                                         }
-                                     }
-                                 }
-                             }
-                             Console.WriteLine();
-
-                         }
-                     }
-                 }
-
-            }
-           
+                                    else if (CategoryAttribute.Exists(method, category))
+                                        Console.WriteLine("Executable  method: {0}\n", method.Name);
+                                } 
+                            }
+                  }
+            }     
             Console.ReadKey();
         }
     }
