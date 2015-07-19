@@ -19,6 +19,7 @@ namespace EMS.ServiceContract
         ServiceEmployee Create(ServiceEmployee employee);
 
         [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/addremark", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
         ServiceRemark AddRemark(string employeeId, ServiceRemark remark);
 
 

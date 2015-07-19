@@ -21,6 +21,7 @@ namespace EMS.ServiceContract
         ServiceEmployee Get(string employeeId);
 
         [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/getall", ResponseFormat = WebMessageFormat.Json)]
         List<ServiceEmployee> GetAll();
     }
 }

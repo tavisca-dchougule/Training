@@ -19,15 +19,22 @@ namespace EMS.ServiceImplementation
        
         public ServiceEmployee Get(string employeeId)
         {
+            if (employeeId == null)
+                throw new ArgumentException();
             BusinessImplementator implementator= new BusinessImplementator();
-            BusinessEmployee businessEmployee= implementator.GetEmployee(employeeId);
+            ServiceEmployee serviceEmployee = null;
+            BusinessEmployee businessEmployee = null;
+            try
+            {
+                 businessEmployee = implementator.GetEmployee(employeeId);
+               
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
             ObjectTranslator translator = new ObjectTranslator();
-            ServiceEmployee serviceEmployee = translator.ConvertToServiceEmployee(businessEmployee);
-            Debug.WriteLine("id: "+serviceEmployee.Id);
-            Debug.WriteLine("title: " + serviceEmployee.Title);
-            Debug.WriteLine("fname: " + serviceEmployee.FirstName);
-            Debug.WriteLine("lname: " + serviceEmployee.LastName);
-            Debug.WriteLine("email: " + serviceEmployee.Email);
+            serviceEmployee = translator.ConvertToServiceEmployee(businessEmployee);
             return serviceEmployee;
         }
 
@@ -35,7 +42,15 @@ namespace EMS.ServiceImplementation
         public List<ServiceEmployee> GetAll()
         {
             BusinessImplementator implementator = new BusinessImplementator();
-            List<BusinessEmployee> businessEmployeeList = implementator.GetAll();
+            List<BusinessEmployee> businessEmployeeList = null;
+            try
+            {
+                 businessEmployeeList = implementator.GetAll();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
             ObjectTranslator translator = new ObjectTranslator();
             List<ServiceEmployee> serviceEmployeeList = new List<ServiceEmployee>();
 

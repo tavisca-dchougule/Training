@@ -19,16 +19,30 @@ namespace EMS.BServiceImplementation
         {
 
             FileHandler fileHandler = new FileHandler();
-             fileHandler.Save(employee);
+            try
+            {
+                fileHandler.Save(employee);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
             return employee;
         }
 
 
         public BusinessRemark AddRemark(string employeeId, BusinessRemark remark)
         {
-            BusinessEmployee employee = this.GetEmployee(employeeId);
-            employee.BusinessRemark = remark;
-            this.Create(employee);
+            try
+            {
+                BusinessEmployee employee = this.GetEmployee(employeeId);
+                employee.BusinessRemark = remark;
+                this.Create(employee);
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
             return remark;
         }
 
@@ -36,7 +50,15 @@ namespace EMS.BServiceImplementation
         public BusinessEmployee GetEmployee(string employeeId)
         {
             FileHandler fileHandler = new FileHandler();
-            BusinessEmployee employee = fileHandler.GetById(employeeId);
+            BusinessEmployee employee = null;
+            try
+            {
+                 employee = fileHandler.GetById(employeeId);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
             return employee;
         }
 
@@ -44,7 +66,16 @@ namespace EMS.BServiceImplementation
         public List<BusinessEmployee> GetAll()
         {
             FileHandler fileHandler = new FileHandler();
-            List<BusinessEmployee> allEmployeeList = fileHandler.GetAll();
+            List<BusinessEmployee> allEmployeeList = null;
+            try
+            {
+
+                allEmployeeList = fileHandler.GetAll();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
             return allEmployeeList;
         }
 

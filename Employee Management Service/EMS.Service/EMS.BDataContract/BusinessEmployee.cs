@@ -46,40 +46,7 @@ namespace EMS.BDataContract
             get;
             set;
         }
-        public void AddData()
-        {
-            Console.WriteLine("Enter Id:");
-            this.Id = Console.ReadLine();
-
-            Console.WriteLine("Enter Title:");
-            this.Title = Console.ReadLine();
-
-            Console.WriteLine("Enter First name:");
-            this.FirstName = Console.ReadLine();
-
-            Console.WriteLine("Enter Last Name:");
-            this.LastName = Console.ReadLine();
-
-            Console.WriteLine("Enter Email:");
-            this.Email = Console.ReadLine();
-        }
-        public void Display()
-        {
-            Console.WriteLine("Enter Id:" + this.Id);
-
-
-            Console.WriteLine("Enter Title:" + this.Title);
-
-
-            Console.WriteLine("Enter First name:" + this.FirstName);
-
-
-            Console.WriteLine("Enter Last Name:" + this.LastName);
-
-
-            Console.WriteLine("Enter Email:" + this.Email);
-
-        }
+       
         public BusinessEmployee()
         {
             BusinessRemark = new BusinessRemark();
