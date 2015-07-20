@@ -1,10 +1,13 @@
-﻿String.prototype.Concat = function (string2) {
-    var string1 = this;
-   
-    var string3 = string1;
-    for (i = 0; i < string2.length; i++) {
-        string3 += string2.charAt(i);
+﻿String.prototype.Concat = function () {
+
+    var firstString = this;
+    for (var i = 0; i < arguments.length; i++) {
+        if (arguments[i] == "null")
+            firstString += "null";
+        if (arguments[i] == "undefined")
+            firstString += "undefined";
+        firstString += arguments[i];
     }
- return string3;
+ return firstString;
 
 };

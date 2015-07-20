@@ -2,14 +2,17 @@
     var string = this;
     if (startIndex >= string.length || startIndex < 0)
     {
-        alert('Invalid Start Index.');
-        return;
+        
+        throw new TypeError;
+        
+       
     }
 
     if (endIndex >= string.length || endIndex < startIndex)
     {
-        alert('Invalid End Index.');
-        return;
+        
+        throw new TypeError;
+       
     }
     var answer = "";
 
