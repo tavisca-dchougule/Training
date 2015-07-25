@@ -1,24 +1,37 @@
-﻿window.ball = window.ball || {}
+﻿
 
-ball.container = function () {
+bouncingBall=bouncingBall ||{};
 
-    var height = (window.innerHeight - 50);
-    var width = (window.innerWidth - 50);
+   bouncingBall.container: function () {
 
-    if (ball.previousTop >= height) {
-        ball.deltaY = -10;
-        return;
+        var height = (window.innerHeight - 50);
+        var width = (window.innerWidth - 50);
+        var deltaXChange = function () {
+            
+
+            if (ball.getPreviousLeft() >= width) {
+             
+                return -10;
+            }
+            if (ball.getPreviousLeft() <= 0) {
+             
+                return 10;
+            }
+        }
+        var deltaYChange = function () {
+            
+            if (ball.getPreviousTop() <= 0) {
+                
+                return 10;
+            }
+            if (ball.getPreviousTop() >= height) {
+                
+                return -10;
+            }
+           
+        }
+
+           
+            
+        
     }
-    if (ball.previousLeft >= width) {
-        ball.deltaX = -10;
-        return;
-    }
-    if (ball.previousTop <= 0) {
-        ball.deltaY = 10;
-        return;
-    }
-    if (ball.previousLeft <= 0) {
-        ball.deltaX = 10;
-        return;
-    }
-}
