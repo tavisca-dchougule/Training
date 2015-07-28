@@ -14,8 +14,6 @@ namespace EMS.ServiceContract
     [ServiceContract]
     public interface IEmployeeService
     {
-        //  [WebGet(UriTemplate = "GetData/{employeeId}", ResponseFormat = WebMessageFormat.Json)]
-       
         [WebInvoke(Method ="GET", UriTemplate ="/get/{employeeId}",ResponseFormat = WebMessageFormat.Json)]
         [OperationContract]
         Employee Get(string employeeId);

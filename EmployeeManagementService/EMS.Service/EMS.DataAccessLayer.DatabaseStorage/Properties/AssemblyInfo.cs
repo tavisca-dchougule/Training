@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EMS.DataAccessLayer")]
+[assembly: AssemblyTitle("EMS.DataAccessLayer.DatabaseStorage")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("EMS.DataAccessLayer")]
+[assembly: AssemblyProduct("EMS.DataAccessLayer.DatabaseStorage")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("eb6bc040-d1b4-4c46-ba6f-7ee49e596b43")]
+[assembly: Guid("133a836a-dac6-4781-8e5d-5d1b8fa2ccb8")]
 
 // Version information for an assembly consists of the following four values:
 //

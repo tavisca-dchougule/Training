@@ -4,17 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EMS.BusinessServiceContract;
+using EMS.BusinessInterface;
 
 namespace EMS.EnterpriseLibrary
 {
-    public class CacheManager : EMS.BusinessServiceContract.ICacheManager
+    public class CacheManager : EMS.BusinessInterface.ICacheManager
     {
         public  Object Get(string key)
         {
             var cacheManager = CacheFactory.GetCacheManager();
             return cacheManager.GetData(key);
-
         }
         public void Add(string key,Object value)
         {

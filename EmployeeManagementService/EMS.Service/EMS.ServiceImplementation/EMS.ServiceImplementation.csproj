@@ -49,17 +49,17 @@
     <Compile Include="EMSGetImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EMS.BDataContract\EMS.BusinessDataContract.csproj">
+    <ProjectReference Include="..\EMS.BusinessDataContract\EMS.BusinessDataContract.csproj">
       <Project>{aa957d4f-049b-4819-b58a-15a5e09fafc8}</Project>
       <Name>EMS.BusinessDataContract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EMS.BServiceContract\EMS.BusinessServiceContract.csproj">
-      <Project>{b9ec00bc-03bd-4cf5-96a3-3c0f00a9b488}</Project>
-      <Name>EMS.BusinessServiceContract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EMS.BServiceImplementation\EMS.BusinessServiceImplementation.csproj">
+    <ProjectReference Include="..\EMS.BusinessImplementation\EMS.BusinessImplementation.csproj">
       <Project>{757f3104-d4e0-491b-95aa-643930711e20}</Project>
-      <Name>EMS.BusinessServiceImplementation</Name>
+      <Name>EMS.BusinessImplementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EMS.BusinessInterface\EMS.BusinessInterface.csproj">
+      <Project>{b9ec00bc-03bd-4cf5-96a3-3c0f00a9b488}</Project>
+      <Name>EMS.BusinessInterface</Name>
     </ProjectReference>
     <ProjectReference Include="..\EMS.DataContract\EMS.DataContract.csproj">
       <Project>{15b3e0d2-6217-493a-a690-158c497f5318}</Project>
@@ -77,6 +77,9 @@
       <Project>{626e382a-7dce-484d-971d-9a7edfcb6af8}</Project>
       <Name>EMS.Translator</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\WCF\Microsoft.VisualStudio.ServiceModel.targets" />

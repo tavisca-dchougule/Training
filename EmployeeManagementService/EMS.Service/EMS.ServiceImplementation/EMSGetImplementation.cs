@@ -1,7 +1,7 @@
 ﻿
 
 using EMS.BusinessDataContract;
-using EMS.BusinessServiceImplementation;
+using EMS.BusinessImplementation;
 using EMS.DataContract;
 using EMS.ServiceContract;
 using EMS.Translator;
@@ -30,7 +30,7 @@ namespace EMS.ServiceImplementation
                 return null;
            
             }
-            BusinessImplementator implementator= new BusinessImplementator();
+            BusinessImplementor implementator= new BusinessImplementor();
             Employee serviceEmployee = null;
             BusinessLayerEmployee businessEmployee = null;
             try
@@ -53,7 +53,7 @@ namespace EMS.ServiceImplementation
 
         public List<Employee> GetAll()
         {
-            BusinessImplementator implementator = new BusinessImplementator();
+            BusinessImplementor implementator = new BusinessImplementor();
             List<BusinessLayerEmployee> businessEmployeeList = null;
             try
             {

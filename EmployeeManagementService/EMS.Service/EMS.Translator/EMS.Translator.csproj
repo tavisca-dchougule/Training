@@ -49,7 +49,7 @@
     <Compile Include="RemarkTranslator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EMS.BDataContract\EMS.BusinessDataContract.csproj">
+    <ProjectReference Include="..\EMS.BusinessDataContract\EMS.BusinessDataContract.csproj">
       <Project>{aa957d4f-049b-4819-b58a-15a5e09fafc8}</Project>
       <Name>EMS.BusinessDataContract</Name>
     </ProjectReference>

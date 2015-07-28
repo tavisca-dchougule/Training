@@ -9,10 +9,10 @@ using System.Text;
 using EMS.BusinessDataContract;
 
 
-namespace EMS.BServiceContract
+namespace EMS.BusinessInterface
 {
 
-    public interface IEmployee
+    public interface IEmployeeManager
     {
 
         BusinessLayerEmployee GetEmployee(string employeeId);

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EMS.BusinessServiceContract
+namespace EMS.BusinessInterface
 {
     public interface ICacheManager
     {

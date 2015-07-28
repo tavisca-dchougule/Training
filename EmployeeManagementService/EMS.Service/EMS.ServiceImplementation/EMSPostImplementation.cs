@@ -1,6 +1,6 @@
 ﻿
 using EMS.BusinessDataContract;
-using EMS.BusinessServiceImplementation;
+using EMS.BusinessImplementation;
 using EMS.DataContract;
 using EMS.EnterpriseLibrary;
 using EMS.ServiceContract;
@@ -29,7 +29,7 @@ namespace EMS.ServiceImplementation
             }
             Guid g= Guid.NewGuid();
             employee.Id = g.ToString();
-            BusinessImplementator implementator = new BusinessImplementator();
+            BusinessImplementor implementator = new BusinessImplementor();
             EmployeeTranslator employeeTranslator = new EmployeeTranslator();
             BusinessLayerEmployee businessLayerEmployee = employeeTranslator.ConvertToBusinessEmployee(employee);
             Employee serviceEmployee = null;
@@ -56,7 +56,7 @@ namespace EMS.ServiceImplementation
                 if (rethrow) throw e;
                 return null;
             }
-            BusinessImplementator implementator = new BusinessImplementator();
+            BusinessImplementor implementator = new BusinessImplementor();
             RemarkTranslator remarkTranslator = new RemarkTranslator();
             BusinessLayerRemark businessRemark = remarkTranslator.ConvertToBusinessRemark(remark);
             Remark serviceRemark = null;

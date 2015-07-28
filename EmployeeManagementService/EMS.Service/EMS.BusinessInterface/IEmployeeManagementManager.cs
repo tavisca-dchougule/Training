@@ -9,11 +9,11 @@ using System.ServiceModel;
 using System.Text;
 
 
-namespace EMS.BusinessServiceContract
+namespace EMS.BusinessInterface
 {
 
 
-    public interface IEmployeeManagement
+    public interface IEmployeeManagementManager
     {
 
         BusinessLayerEmployee Create(BusinessLayerEmployee employee);
