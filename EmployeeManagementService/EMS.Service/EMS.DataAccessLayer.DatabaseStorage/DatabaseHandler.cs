@@ -163,7 +163,7 @@ namespace EMS.DataAccessLayer.DatabaseStorage
                 SqlConnection connection = this.DBConnect();
                 connection.Open();
 
-                SqlCommand command = new SqlCommand("getAllEmployee", connection);
+                SqlCommand command = new SqlCommand("GetAll", connection);
 
                 SqlDataReader result = command.ExecuteReader();
                
