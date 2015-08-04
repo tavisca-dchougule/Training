@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseHandler.cs" />
+    <Compile Include="EmployeeIdentityDBHandler.cs" />
+    <Compile Include="PostCallDBHandler.cs" />
+    <Compile Include="GetCallDBHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,9 +56,17 @@
       <Project>{b9ec00bc-03bd-4cf5-96a3-3c0f00a9b488}</Project>
       <Name>EMS.BusinessInterface</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EMS.DataAccessLayer.DBConnectionPool\EMS.DataAccessLayer.DBConnectionPool.csproj">
+      <Project>{a77f790b-5f44-4ec1-8b7e-57d38e87dd61}</Project>
+      <Name>EMS.DataAccessLayer.DBConnectionPool</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EMS.EnterpriseLibrary\EMS.EnterpriseLibrary.csproj">
       <Project>{4342247c-e2a4-475c-9fd6-fa99778091d7}</Project>
       <Name>EMS.EnterpriseLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EMS.ErrorSpace\EMS.ErrorSpace.csproj">
+      <Project>{0da23f21-1ac5-4b07-ab58-5a2a25b0a27c}</Project>
+      <Name>EMS.ErrorSpace</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

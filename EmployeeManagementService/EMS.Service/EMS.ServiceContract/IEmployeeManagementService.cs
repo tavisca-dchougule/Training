@@ -16,12 +16,12 @@ namespace EMS.ServiceContract
     {
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "/create", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
-        Employee Create(Employee employee);
+        EmployeeResponse Create(Employee employee);
 
         [OperationContract]
-        [WebInvoke(Method = "POST", UriTemplate = "/addremark", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
-        Remark AddRemark(string employeeId, Remark remark);
+        [WebInvoke(Method = "POST", UriTemplate = "/employee/{employeeId}/addremark", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        RemarkResponse AddRemark(string employeeId, Remark remark);
 
-
+       
     }
 }

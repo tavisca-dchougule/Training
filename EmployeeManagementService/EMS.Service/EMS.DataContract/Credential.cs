@@ -5,31 +5,36 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
+
 namespace EMS.DataContract
 {
+    [Serializable]
     [DataContract]
-    public class Remark
+    public class Credential
     {
         [DataMember]
-        public DateTime DateTime
+        public string UserName
         {
             get;
             set;
         }
 
         [DataMember]
-        public string Text
+        public string Password
         {
             get;
             set;
         }
-        public Remark()
+        
+        public Credential()
         {
         }
-        public Remark(DateTime dateTime, string text)
+        public Credential(string userName, string password)
         {
-            this.DateTime = dateTime;
-            this.Text = text;
+            this.UserName = userName;
+            this.Password = password;
+            
         }
+
     }
 }

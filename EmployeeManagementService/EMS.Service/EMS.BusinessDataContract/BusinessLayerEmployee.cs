@@ -46,12 +46,24 @@ namespace EMS.BusinessDataContract
             get;
             set;
         }
+        [DataMember]
+        public string Designation
+        {
+            get;
+            set;
+        }
+        [DataMember]
+        public string Password
+        {
+            get;
+            set;
+        }
        
         public BusinessLayerEmployee()
         {
             Remarks = new List<BusinessLayerRemark>();
         }
-        public BusinessLayerEmployee(string id, string title, string firstname, string lastName, string email, List<BusinessLayerRemark> businessRemark)
+        public BusinessLayerEmployee(string id, string title, string firstname, string lastName, string email, List<BusinessLayerRemark> businessRemark,string password,string designation)
         {
             
             this.Id = id;
@@ -60,6 +72,8 @@ namespace EMS.BusinessDataContract
             this.LastName = lastName;
             this.Email = email;
             this.Remarks = businessRemark;
+            this.Password = password;
+            this.Designation = designation;
         }
     }
 }

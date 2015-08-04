@@ -11,16 +11,9 @@ using System.Text;
 
 namespace EMS.BusinessInterface
 {
-
-
     public interface IEmployeeManagementManager
     {
-
         BusinessLayerEmployee Create(BusinessLayerEmployee employee);
-
-
         BusinessLayerRemark AddRemark(string employeeId, BusinessLayerRemark remark);
-
-
     }
 }

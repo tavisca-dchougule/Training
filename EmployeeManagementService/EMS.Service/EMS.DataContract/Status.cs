@@ -4,32 +4,31 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-
 namespace EMS.DataContract
 {
     [DataContract]
-    public class Remark
+    public class Status
     {
         [DataMember]
-        public DateTime DateTime
+        public String StatusCode
         {
             get;
             set;
         }
 
         [DataMember]
-        public string Text
+        public string Message
         {
             get;
             set;
         }
-        public Remark()
+        public Status()
         {
         }
-        public Remark(DateTime dateTime, string text)
+        public Status(string statusCode, string message)
         {
-            this.DateTime = dateTime;
-            this.Text = text;
+            this.StatusCode = statusCode;
+            this.Message = message; 
         }
     }
 }

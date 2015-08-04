@@ -10,38 +10,50 @@ using System.Text;
 
 namespace EMS.Translator
 {
-    
-    public class EmployeeTranslator 
+
+    public class EmployeeTranslator
     {
         public BusinessLayerEmployee ConvertToBusinessEmployee(Employee employee)
         {
-            RemarkTranslator remarkTranslator = new RemarkTranslator();
+
             List<BusinessLayerRemark> tempList = new List<BusinessLayerRemark>();
-            for (int i = 0; i < employee.Remarks.Count(); i++)
+            if (employee.Remarks == null)
+                tempList = null;
+            else
             {
-                tempList.Add( remarkTranslator.ConvertToBusinessRemark(employee.Remarks.ElementAt(i)));
+                RemarkTranslator remarkTranslator = new RemarkTranslator();
+                for (int i = 0; i < employee.Remarks.Count(); i++)
+                {
+                    tempList.Add(remarkTranslator.ConvertToBusinessRemark(employee.Remarks.ElementAt(i)));
+                }
             }
-           
-            BusinessLayerEmployee businessLayerEmployee = new BusinessLayerEmployee(employee.Id, employee.Title, employee.FirstName, employee.LastName, employee.Email, tempList);
-            
+
+            BusinessLayerEmployee businessLayerEmployee = new BusinessLayerEmployee(employee.Id, employee.Title, employee.FirstName, employee.LastName, employee.Email, tempList, employee.Password, employee.Designation);
+
             return businessLayerEmployee;
 
         }
 
         public Employee ConvertToServiceEmployee(BusinessLayerEmployee employee)
         {
-            RemarkTranslator remarkTranslator = new RemarkTranslator();
             List<Remark> tempList = new List<Remark>();
-            for (int i = 0; i < employee.Remarks.Count(); i++)
+            if (employee.Remarks == null)
+                tempList = null;
+            else
             {
-                tempList.Add(remarkTranslator.ConvertToServiceRemark(employee.Remarks.ElementAt(i)));
+                RemarkTranslator remarkTranslator = new RemarkTranslator();
+
+                for (int i = 0; i < employee.Remarks.Count(); i++)
+                {
+                    tempList.Add(remarkTranslator.ConvertToServiceRemark(employee.Remarks.ElementAt(i)));
+                }
             }
-            
-            Employee serviceEmployee = new Employee(employee.Id, employee.Title, employee.FirstName, employee.LastName, employee.Email, tempList);
-           
+
+            Employee serviceEmployee = new Employee(employee.Id, employee.Title, employee.FirstName, employee.LastName, employee.Email, tempList, employee.Password, employee.Designation);
+
             return serviceEmployee;
         }
-        
-        
+
+
     }
 }

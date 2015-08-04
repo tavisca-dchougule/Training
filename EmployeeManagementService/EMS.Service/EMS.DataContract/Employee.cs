@@ -16,9 +16,22 @@ namespace EMS.DataContract
             get;
             set;
         }
+
         
         [DataMember]
         public string Id
+        {
+            get;
+            set;
+        }
+        [DataMember]
+        public string Designation
+        {
+            get;
+            set;
+        }
+        [DataMember]
+        public string Password
         {
             get;
             set;
@@ -54,9 +67,9 @@ namespace EMS.DataContract
     
         public Employee()
         {
-            Remarks = new List<Remark>();
+            
         }
-        public Employee(string id, string title, string firstname, string lastName, string email, List<Remark> serviceRemark)
+        public Employee(string id, string title, string firstname, string lastName, string email, List<Remark> serviceRemark,string password,string designation)
         {
             
             this.Id = id;
@@ -65,6 +78,8 @@ namespace EMS.DataContract
             this.LastName = lastName;
             this.Email = email;
             this.Remarks= serviceRemark;
+            this.Password = password;
+            this.Designation = designation;
 
         }
        

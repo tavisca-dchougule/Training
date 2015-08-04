@@ -46,9 +46,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBHandler\IEmployeeStorageIdentity.cs" />
+    <Compile Include="IEmployeeIdentityManager.cs" />
     <Compile Include="ICacheManager.cs" />
     <Compile Include="IEmployeeManager.cs" />
-    <Compile Include="IEmployeeStorage.cs" />
+    <Compile Include="DBHandler\IEmployeeStoragePostCall.cs" />
+    <Compile Include="DBHandler\IEmployeeStorageGetCall.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IEmployeeManagementManager.cs" />
   </ItemGroup>

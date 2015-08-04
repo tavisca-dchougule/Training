@@ -16,8 +16,8 @@ namespace EMS.BusinessInterface
     {
 
         BusinessLayerEmployee GetEmployee(string employeeId);
-
-
         List<BusinessLayerEmployee> GetAll();
+        List<BusinessLayerRemark> GetRemark(string employeeId, string pageNumber,string rows);
+        int GetRemarkCount(string employeeId);
     }
 }

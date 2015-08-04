@@ -28,9 +28,9 @@ namespace EMS.BusinessDataContract
         {
             
         }
-        public BusinessLayerRemark(DateTime dateTime, string text)
+        public BusinessLayerRemark(string text)
         {
-            this.DateTime = dateTime;
+            this.DateTime = DateTime.UtcNow;
             this.Text = text;
         }
     }

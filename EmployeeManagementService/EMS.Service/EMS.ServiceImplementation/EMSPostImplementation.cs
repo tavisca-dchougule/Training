@@ -1,10 +1,12 @@
-﻿
-using EMS.BusinessDataContract;
+﻿using EMS.BusinessDataContract;
 using EMS.BusinessImplementation;
+using EMS.BusinessInterface;
 using EMS.DataContract;
 using EMS.EnterpriseLibrary;
+using EMS.EnterpriseLibrary.Unity;
 using EMS.ServiceContract;
 using EMS.Translator;
+using Microsoft.Practices.Unity;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -18,63 +20,72 @@ namespace EMS.ServiceImplementation
 
     public class EMSPostImplementation :IEmployeeManagementService
     {
-        public Employee Create(Employee employee)
+        public EmployeeResponse Create(Employee employee)
         {
+            EmployeeResponse response = new EmployeeResponse();
             if (employee == null)
             {
-                ArgumentException e = new ArgumentException();
-                var rethrow = ExceptionPolicy.HandleException("Policy1", e);
-                if (rethrow) throw e;
-                return null;
-            }
-            Guid g= Guid.NewGuid();
-            employee.Id = g.ToString();
-            BusinessImplementor implementator = new BusinessImplementor();
+                ArgumentNullException e = new ArgumentNullException();
+                ExceptionPolicy.HandleException("ServiceLayerPolicy", e);
+                response.Status.StatusCode = "500";
+                response.Status.Message = e.Message;
+                return response;         
+            }       
             EmployeeTranslator employeeTranslator = new EmployeeTranslator();
             BusinessLayerEmployee businessLayerEmployee = employeeTranslator.ConvertToBusinessEmployee(employee);
             Employee serviceEmployee = null;
             try
             {
-                serviceEmployee = employeeTranslator.ConvertToServiceEmployee(implementator.Create(businessLayerEmployee));
+                IUnityContainer container = Factory.GetUnityConfiguration();
+                IEmployeeManagementManager implementor = container.Resolve<IEmployeeManagementManager>();
+                serviceEmployee = employeeTranslator.ConvertToServiceEmployee(implementor.Create(businessLayerEmployee));
             }
             catch (Exception e)
             {
-                var rethrow = ExceptionPolicy.HandleException("Policy1", e);
-                if (rethrow) throw e;
-                return null;
+                ExceptionPolicy.HandleException("ServiceLayerPolicy", e);
+                response.Status.StatusCode = "500";
+                response.Status.Message = e.Message;
+                return response;       
             }
-            return serviceEmployee;
+            response.Employee = serviceEmployee;
+            return response; 
         }
 
 
-        public Remark AddRemark(string employeeId, Remark remark)
+        public RemarkResponse AddRemark(string employeeId, Remark remark)
         {
+            RemarkResponse response = new RemarkResponse();
             if (employeeId == null || remark == null)
             {
-                ArgumentException e = new ArgumentException();
-                var rethrow = ExceptionPolicy.HandleException("Policy1", e);
-                if (rethrow) throw e;
-                return null;
+                ArgumentNullException e = new ArgumentNullException();
+                ExceptionPolicy.HandleException("ServiceLayerPolicy", e);
+                response.Status.StatusCode = "500";
+                response.Status.Message = e.Message;
+                return response;
+               
             }
-            BusinessImplementor implementator = new BusinessImplementor();
+           
+            IUnityContainer container = Factory.GetUnityConfiguration();
+            IEmployeeManagementManager implementor = container.Resolve<IEmployeeManagementManager>();
+           
             RemarkTranslator remarkTranslator = new RemarkTranslator();
             BusinessLayerRemark businessRemark = remarkTranslator.ConvertToBusinessRemark(remark);
             Remark serviceRemark = null;
             try
             {
-
-                 serviceRemark = remarkTranslator.ConvertToServiceRemark(implementator.AddRemark(employeeId, businessRemark));
+                 serviceRemark = remarkTranslator.ConvertToServiceRemark(implementor.AddRemark(employeeId, businessRemark));
             }
             catch (Exception e)
             {
-              
-                var rethrow = ExceptionPolicy.HandleException("Policy1", e);
-                if (rethrow) throw e;
-                return null;
+
+                ExceptionPolicy.HandleException("ServiceLayerPolicy", e);
+                response.Status.StatusCode = "500";
+                response.Status.Message = e.Message;
+                return response;
             }
-            return serviceRemark;
+            response.Remark = serviceRemark;
+            return response;
 
         }
-
     }
 }

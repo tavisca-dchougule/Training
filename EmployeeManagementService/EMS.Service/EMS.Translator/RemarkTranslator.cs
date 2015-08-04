@@ -10,22 +10,28 @@ using System.Text;
 
 namespace EMS.Translator
 {
-    
-    public class RemarkTranslator 
+
+    public class RemarkTranslator
     {
-        
-        
         public BusinessLayerRemark ConvertToBusinessRemark(Remark remark)
         {
-            BusinessLayerRemark businessRemark = new BusinessLayerRemark(remark.DateTime,remark.Text);
-            return businessRemark;
+            BusinessLayerRemark businessRemark;
+            if (remark == null)
+                businessRemark = null;
+            else
+                businessRemark = new BusinessLayerRemark(remark.Text);
 
+            return businessRemark;
         }
 
         public Remark ConvertToServiceRemark(BusinessLayerRemark remark)
         {
-           
-            Remark serviceRemark = new Remark(remark.DateTime, remark.Text);
+            Remark serviceRemark;
+            if (remark == null)
+                serviceRemark = null;
+            else
+                serviceRemark = new Remark(remark.DateTime, remark.Text);
+
             return serviceRemark;
         }
     }

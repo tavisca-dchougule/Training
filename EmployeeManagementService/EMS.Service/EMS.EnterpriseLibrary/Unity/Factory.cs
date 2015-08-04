@@ -14,17 +14,8 @@ namespace EMS.EnterpriseLibrary.Unity
         public static IUnityContainer GetUnityConfiguration()
         {
             IUnityContainer container = new UnityContainer();
-            UnityConfigurationSection section=null;
-            try
-            {
-                 section = (UnityConfigurationSection)ConfigurationManager.GetSection("unity");
-            }
-            catch (Exception e)
-            {
-                var rethrow = ExceptionPolicy.HandleException("Policy1", e);
-                if (rethrow) throw e;
-                return null;
-            }
+            UnityConfigurationSection section = null;
+            section = (UnityConfigurationSection)ConfigurationManager.GetSection("unity");
             section.Configure(container);
             return container;
         }
