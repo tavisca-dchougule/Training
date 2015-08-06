@@ -31,7 +31,6 @@ namespace EMS.BusinessImplementation
             IEmployeeStorageIdentity dataManager = container.Resolve<IEmployeeStorageIdentity>();
             employee = dataManager.ChangePassword(changePassword);
             return employee;
-
         }
     }
 }

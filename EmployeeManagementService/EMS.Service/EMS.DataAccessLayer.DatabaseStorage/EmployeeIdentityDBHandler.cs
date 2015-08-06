@@ -57,6 +57,7 @@ namespace EMS.DataAccessLayer.DatabaseStorage
             }
             finally
             {
+                if (result != null)
                 result.Close();
                 dbPool.FreeConnection(iConn);
             }  
@@ -113,6 +114,7 @@ namespace EMS.DataAccessLayer.DatabaseStorage
             }
             finally
             {
+                if(result!=null)
                 result.Close();
                 dbPool.FreeConnection(iConn);
             }
