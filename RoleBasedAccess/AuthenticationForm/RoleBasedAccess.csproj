@@ -273,14 +273,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\ChangeCredential.cs" />
-    <Compile Include="Model\EmployeeResponse.cs" />
-    <Compile Include="Model\GetAllEmployeeResponse.cs" />
-    <Compile Include="Model\PaginationRemarkListResponse.cs" />
-    <Compile Include="Model\RemarkCountResponse.cs" />
-    <Compile Include="Model\RemarkResponse.cs" />
-    <Compile Include="Model\Result.cs" />
-    <Compile Include="Model\Status.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -312,11 +304,6 @@
     <Compile Include="Control\LoginUserControl.ascx.designer.cs">
       <DependentUpon>LoginUserControl.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Model\Employee.cs" />
-    <Compile Include="Model\HttpClient.cs" />
-    <Compile Include="Model\Credential.cs" />
-    <Compile Include="Model\Remark.cs" />
-    <Compile Include="Model\Serializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\WebUserControl1.ascx.cs">
       <DependentUpon>WebUserControl1.ascx</DependentUpon>
@@ -386,6 +373,10 @@
     <ProjectReference Include="..\RoleBasedAccess.EnterpriseLibrary\RoleBasedAccess.EnterpriseLibrary.csproj">
       <Project>{aa73b8f4-6565-49d4-b875-7980bdd814a8}</Project>
       <Name>RoleBasedAccess.EnterpriseLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoleBasedAccess.Model\RoleBasedAccess.Model.csproj">
+      <Project>{ee0abfd1-1676-4567-bef1-c839781a2c4b}</Project>
+      <Name>RoleBasedAccess.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

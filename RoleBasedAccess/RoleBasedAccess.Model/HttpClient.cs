@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 
-namespace AuthenticationForm.Model
+namespace RoleBasedAccess.Model
 {
     public class HttpClient
     {

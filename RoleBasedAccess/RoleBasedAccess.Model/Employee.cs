@@ -1,10 +1,12 @@
-﻿using System;
+﻿using RoleBasedAccess.EnterpriseLibrary;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
-namespace AuthenticationForm.Model
+namespace RoleBasedAccess.Model
 {
     [Serializable]
     [DataContract]
@@ -61,7 +63,21 @@ namespace AuthenticationForm.Model
             get;
             set;
         }
-        
+        public EmployeeResponse CreateEmployee()
+        {
+            var client = new HttpClient();
+            EmployeeResponse responseEmployee = null;
+            try
+            {
+                string EmployeeManagementServiceUrl = ConfigurationManager.AppSettings["employeemanagementserviceurl"];
+                responseEmployee = client.UploadData<Employee, EmployeeResponse>(EmployeeManagementServiceUrl + "create", this);
+            }
+            catch (Exception ex)
+            {
+                ExceptionPolicy.HandleException("MyPolicy", ex);
+            }
+            return responseEmployee;
+        }
     }
 
 }

@@ -1,5 +1,6 @@
-﻿using AuthenticationForm.Model;
+﻿
 using RoleBasedAccess.EnterpriseLibrary;
+using RoleBasedAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -33,17 +34,7 @@ namespace AuthenticationForm
             employee.Email = TextBoxEmail.Text;
             employee.Designation =  TextBoxDesignation.Text;
             employee.Password = employee.FirstName;
-            EmployeeResponse responseEmployee = null;
-            var client = new HttpClient();
-            try
-            {
-                string EmployeeManagementServiceUrl = ConfigurationManager.AppSettings["employeemanagementserviceurl"];
-                responseEmployee = client.UploadData<Employee, EmployeeResponse>(EmployeeManagementServiceUrl + "create", employee);
-            }
-            catch(Exception ex)
-            {
-                ExceptionPolicy.HandleException("MyPolicy", ex);
-            }
+            EmployeeResponse responseEmployee = employee.CreateEmployee();
             if (string.Equals(responseEmployee.Status.StatusCode, "200", StringComparison.OrdinalIgnoreCase) == false)
             {
                 LabelCreateEmployee.Visible = true;

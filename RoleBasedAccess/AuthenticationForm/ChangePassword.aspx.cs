@@ -1,5 +1,6 @@
-﻿using AuthenticationForm.Model;
+﻿
 using RoleBasedAccess.EnterpriseLibrary;
+using RoleBasedAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -22,17 +23,8 @@ namespace AuthenticationForm
             changeCredential.OldPassword = TextBoxOldPassword.Text;
             changeCredential.NewPassword = TextBoxNewPassword.Text;
 
-            var client = new HttpClient();
-            EmployeeResponse responseEmployee=null;
-            try
-            {
-                string employeeIdentityUrl = ConfigurationManager.AppSettings["employeeidentityurl"];
-                responseEmployee= client.UploadData<ChangeCredential, EmployeeResponse>(employeeIdentityUrl + "changepassword", changeCredential);
-            }
-            catch (Exception ex)
-            {
-                ExceptionPolicy.HandleException("MyPolicy", ex);
-            }
+            EmployeeResponse responseEmployee=changeCredential.CredentialChange();
+           
             if (string.Equals(responseEmployee.Status.StatusCode,"200", StringComparison.OrdinalIgnoreCase) == false)
             {
                 LabelChangePassword.Visible = true;

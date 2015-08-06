@@ -4,17 +4,24 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 
-namespace AuthenticationForm.Model
+namespace RoleBasedAccess.Model
 {
-    [Serializable]
     [DataContract]
-    public class RemarkCountResponse : Result
+    public class Status
     {
         [DataMember]
-        public int RemarkCount
+        public String StatusCode
         {
             get;
             set;
         }
+
+        [DataMember]
+        public string Message
+        {
+            get;
+            set;
+        }
+       
     }
 }

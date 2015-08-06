@@ -1,5 +1,6 @@
-﻿using AuthenticationForm.Model;
+﻿
 using RoleBasedAccess.EnterpriseLibrary;
+using RoleBasedAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -17,18 +18,8 @@ namespace AuthenticationForm
         {
             if (Page.IsPostBack == false)
             {
-                var client = new HttpClient();
-                GetAllEmployeeResponse employeeListResponse = null;
+                GetAllEmployeeResponse employeeListResponse = GetAllEmployeeResponse.GetAllEmployee();
                 List<Employee> employeeList = null;
-                try
-                {
-                    string employeeServiceUrl = ConfigurationManager.AppSettings["employeeserviceurl"];
-                    employeeListResponse = client.GetData<GetAllEmployeeResponse>(employeeServiceUrl + "getall");
-                }
-                catch(Exception ex)
-                {
-                    ExceptionPolicy.HandleException("MyPolicy", ex);
-                }
                 if (string.Equals(employeeListResponse.Status.StatusCode, "200", StringComparison.OrdinalIgnoreCase) == false)
                 {
                     LabelAddRemark.Visible = true;
@@ -54,17 +45,7 @@ namespace AuthenticationForm
             Remark remark = new Remark();
             remark.DateTime = DateTime.UtcNow;
             remark.Text = TextBoxRemark.Text;
-            HttpClient client = new HttpClient();
-            RemarkResponse responseRemark = null;
-            try
-            {
-                string employeeManagementServiceUrl = ConfigurationManager.AppSettings["employeemanagementserviceurl"];
-                responseRemark = client.UploadData<Remark, RemarkResponse>(employeeManagementServiceUrl + "employee/" + selectedEmployee + "/addremark", remark);
-            }
-            catch(Exception ex)
-            {
-                ExceptionPolicy.HandleException("MyPolicy", ex);
-            }
+            RemarkResponse responseRemark = remark.AddRemark(selectedEmployee);
             if (string.Equals(responseRemark.Status.StatusCode, "200", StringComparison.OrdinalIgnoreCase) == false)
             {
                 LabelAddRemark.Visible = true;
@@ -73,8 +54,6 @@ namespace AuthenticationForm
             }
             LabelAddRemark.Visible = true;
             LabelAddRemark.Text = "Remark Added Successfully.";
-             
-
         }
 
         protected void OnChangePassword_Click(object sender, EventArgs e)

@@ -1,5 +1,6 @@
-﻿using AuthenticationForm.Model;
+﻿
 using RoleBasedAccess.EnterpriseLibrary;
+using RoleBasedAccess.Model;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -23,20 +24,9 @@ namespace AuthenticationForm
             Credential credential=new Credential();
             credential.UserName = UsernameTextbox.Text;
             credential.Password = PasswordTextbox.Text;
-            
-            var client = new HttpClient();
-            EmployeeResponse employeeResponse = null;
-            Employee employee = null;
-            try
-            {
-                string employeeManagementServiceUrl = ConfigurationManager.AppSettings["employeeidentityurl"];
-                employeeResponse = client.UploadData<Credential, EmployeeResponse>(employeeManagementServiceUrl +"/authenticate",credential );
-            }
-            catch (Exception ex)
-            {
-                ExceptionPolicy.HandleException("MyPolicy", ex);
-            }
 
+            EmployeeResponse employeeResponse = credential.Authenticate();
+            Employee employee = null;
             if (string.Equals(employeeResponse.Status.StatusCode, "200",StringComparison.OrdinalIgnoreCase)==false)
             {
                 LabelLoginState.Visible = true;

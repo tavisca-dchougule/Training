@@ -4,14 +4,14 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 
-namespace AuthenticationForm.Model
+namespace RoleBasedAccess.Model
 {
     [Serializable]
     [DataContract]
-    public class RemarkResponse : Result
+    public class EmployeeResponse : Result
     {
         [DataMember]
-        public Remark Remark
+        public Employee Employee
         {
             get;
             set;
