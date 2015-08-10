@@ -30,7 +30,7 @@ namespace AuthenticationForm
                 }
                 GridViewRemark.VirtualItemCount = remarkCountResponse.RemarkCount;
 
-                PaginationRemarkListResponse remarkListResponse = PaginationRemarkListResponse.GetRemarkList(employeeId);
+                PaginationRemarkListResponse remarkListResponse = PaginationRemarkListResponse.GetRemarkList(employeeId,"1","3");
                 if (string.Equals(remarkListResponse.Status.StatusCode, "200", StringComparison.OrdinalIgnoreCase) == false)
                 {
                     LabelFetchRemark.Visible = true;
@@ -49,7 +49,7 @@ namespace AuthenticationForm
         {
             string employeeId = Session["employeeId"].ToString();
             GridViewRemark.PageIndex = e.NewPageIndex;
-            PaginationRemarkListResponse remarkListResponse = PaginationRemarkListResponse.GetRemarkList(employeeId);
+            PaginationRemarkListResponse remarkListResponse = PaginationRemarkListResponse.GetRemarkList(employeeId,""+(GridViewRemark.PageIndex+1),"3");
 
             if (string.Equals(remarkListResponse.Status.StatusCode, "200", StringComparison.OrdinalIgnoreCase) == false)
             {

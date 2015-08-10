@@ -1,6 +1,7 @@
 ﻿using RoleBasedAccess.EnterpriseLibrary;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Configuration;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,12 +13,13 @@ namespace RoleBasedAccess.Model
     public class Remark
     {
         [DataMember]
+        [Required]
         public DateTime DateTime
         {
             get;
             set;
         }
-
+         [Required]
         [DataMember]
         public string Text
         {

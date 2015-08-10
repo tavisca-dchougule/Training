@@ -18,7 +18,7 @@ namespace RoleBasedAccess.Model
             get;
             set;
         }
-        public static PaginationRemarkListResponse GetRemarkList(string employeeId)
+        public static PaginationRemarkListResponse GetRemarkList(string employeeId,string pageNumber,string pageSize)
         {
 
             HttpClient client = new HttpClient();
@@ -27,7 +27,7 @@ namespace RoleBasedAccess.Model
             try
             {
                 string EmployeeServiceUrl = ConfigurationManager.AppSettings["employeeserviceurl"];
-                remarkListResponse = client.GetData<PaginationRemarkListResponse>(EmployeeServiceUrl + "employee/" + employeeId + "/" + 1 + "/" + 3 + "/getremark");
+                remarkListResponse = client.GetData<PaginationRemarkListResponse>(EmployeeServiceUrl + "employee/" + employeeId + "/" + int.Parse(pageNumber) + "/" + int.Parse(pageSize) + "/getremark");
             }
             catch (Exception ex)
             {
