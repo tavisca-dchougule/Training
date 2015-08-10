@@ -1,0 +1,42 @@
+﻿@model PagedList.IPagedList<RoleBasedAccess.Model.Remark>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Employee Remarks";
+}
+
+<h2>Employee Remarks</h2>
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        @Html.ActionLink("View Remark", "EmployeeViewRemark", "Employee")
+        @Html.ActionLink("Change Password", "Manage", "Account")
+    </ul>
+</div>
+
+<table class="table">
+    <tr>
+        <th>Date Time
+        </th>
+        <th>Remark
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Text)
+            </td>
+        </tr>
+    }
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("EmployeeViewRemark", new { page }))

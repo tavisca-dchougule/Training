@@ -1,0 +1,40 @@
+﻿@model RoleBasedAccess.Model.Remark
+
+@{
+    ViewBag.Title = "AddRemark";
+}
+
+<h2>AddRemark</h2>
+@using (Html.BeginForm("SaveRemark", "Hr")) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    }
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+            @Html.ActionLink("Add Employee", "AddEmployee", "Hr")
+            @Html.ActionLink("Add Remark", "AddRemark", "Hr")
+         @Html.ActionLink("Change Password", "Manage", "Account")
+    </ul>
+</div>
+<form action="/Hr/SaveRemark" method="post">
+<fieldset>
+        <legend>Log in Form</legend>
+        <ol>
+            <li>
+                @Html.Label(ViewData["Success"].ToString())
+            </li>
+            <li>
+                @Html.Label("Select Employee")
+                @Html.DropDownList("SelectedEmployee", ViewData["RemarkList"] as List<SelectListItem>)
+              
+            </li>
+             <li>
+                @Html.LabelFor(m => m.Text)
+                @Html.TextBoxFor(m => m.Text)
+                @Html.ValidationMessageFor(m => m.Text)
+            </li>
+           
+        </ol>
+        <input type="submit" value="Add Remark" />
+    </fieldset>
+    </form>
