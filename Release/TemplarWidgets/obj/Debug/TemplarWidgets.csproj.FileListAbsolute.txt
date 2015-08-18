@@ -1,0 +1,9 @@
+C:\Users\dchoughule\Desktop\Templar\2. Release\TemplarWidgets\bin\TemplarWidgets.dll
+C:\Users\dchoughule\Desktop\Templar\2. Release\TemplarWidgets\bin\TemplarWidgets.pdb
+C:\Users\dchoughule\Desktop\Templar\2. Release\TemplarWidgets\obj\Debug\TemplarWidgets.csprojResolveAssemblyReference.cache
+C:\Users\dchoughule\Desktop\Templar\2. Release\TemplarWidgets\obj\Debug\TemplarWidgets.dll
+C:\Users\dchoughule\Desktop\Templar\2. Release\TemplarWidgets\obj\Debug\TemplarWidgets.pdb
+C:\Users\dchoughule\Desktop\Templar\2. Release\TemplarWidgets\bin\Tavisca.Templar.Contract.dll
+C:\Users\dchoughule\Desktop\Templar\2. Release\TemplarWidgets\bin\Tavisca.Templar.Extensions.dll
+C:\Users\dchoughule\Desktop\Templar\2. Release\TemplarWidgets\bin\Tavisca.Templar.WebControls.dll
+C:\Users\dchoughule\Desktop\Templar\2. Release\TemplarWidgets\bin\Tavisca.Frameworks.Spectrum.dll
