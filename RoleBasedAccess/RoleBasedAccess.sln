@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoleBasedAccess.EnterpriseL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoleBasedAccess.Model", "RoleBasedAccess.Model\RoleBasedAccess.Model.csproj", "{EE0ABFD1-1676-4567-BEF1-C839781A2C4B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoleBasedAccess.Tests", "RoleBasedAccess.Tests\RoleBasedAccess.Tests.csproj", "{3DB52B68-4033-47A4-885E-86467BC3473F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{EE0ABFD1-1676-4567-BEF1-C839781A2C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE0ABFD1-1676-4567-BEF1-C839781A2C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE0ABFD1-1676-4567-BEF1-C839781A2C4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DB52B68-4033-47A4-885E-86467BC3473F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DB52B68-4033-47A4-885E-86467BC3473F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DB52B68-4033-47A4-885E-86467BC3473F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DB52B68-4033-47A4-885E-86467BC3473F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

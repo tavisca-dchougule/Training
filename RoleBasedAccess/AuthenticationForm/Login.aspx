@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Log in" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="AuthenticationForm.Account.Login" %>
+﻿<%@ Page Title="Log In" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="AuthenticationForm.Account.Login" %>
 
 <%@ Register Src="~/Control/LoginUserControl.ascx" TagPrefix="uc1" TagName="LoginUserControl" %>
 

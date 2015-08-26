@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="HrAddEmployee.aspx.cs" Inherits="AuthenticationForm.WebForm3" %>
+﻿<%@ Page Title="Add Employee" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="HrAddEmployee.aspx.cs" Inherits="AuthenticationForm.WebForm3" %>
 
 <%@ Register Src="~/Control/HRAddEmployeeTab.ascx" TagPrefix="uc1" TagName="HRAddEmployeeTab" %>
 
@@ -8,8 +8,8 @@
     <div class="container">
   <ul class="nav nav-tabs">
   
-    <li><a href="HRAddEmployee.aspx">Add Employee</a></li>
-    <li><a  href="HRAddRemark.aspx">Add Remark</a></li>
+    <li><a id="AddEmployee" href="HRAddEmployee.aspx">Add Employee</a></li>
+    <li><a id="AddRemark" href="HRAddRemark.aspx">Add Remark</a></li>
 
   </ul>
   </div>
